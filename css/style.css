@@ -79,7 +79,7 @@ body {
     margin-bottom: 15px;
 }
 
-button {
+#loginUsuario, #loginProfesor {
     display: block;
     width: 100%;
     margin-top: 15px;
