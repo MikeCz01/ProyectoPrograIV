@@ -19,7 +19,7 @@ if(!empty($_POST)){
          $_SESSION['id_usuario']=$result['usuario_id'];
          $_SESSION['nombre']=$result['nombre_usuario'];
          $_SESSION[ 'rol'] = $result['rol_id'];
-         S_SESSION['nombre_rol']=$result['nombre_rol'];
+         $_SESSION['nombre_rol']=$result['nombre_rol'];
 
          echo '<div class="alert alert-success"><button type="button" class-close" data-dismiss?"alert"></button>Redirecting</div>';
  }

@@ -41,10 +41,10 @@
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                 <form action="" method="POST" onsubmit="return validar()">
                     <label for="usuario">Usuario</label>
-                    <input type="text" name="usuario" id="usuario" placeholder="Nombre de usuario">
+                    <input type="text" name="usuario" id="usuarioProfesor" placeholder="Nombre de usuario">
                     <label for="password">Contraseña</label>
                     <div id="messageProfesor"></div>
-                    <input type="password" name="pass" id="pass" placeholder="Contraseña">
+                    <input type="password" name="pass" id="passProfesor" placeholder="Contraseña">
                     <button id="loginProfesor" type="button">INICIAR SESION</button>
                 </form>
                 </div>
