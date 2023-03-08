@@ -11,7 +11,7 @@ $(document).ready(function(){
 function loginUsuario() {
     var login = $('#usuario').val();
     var pass = $('#pass').val();
-debugger;
+
 $.ajax({
     url: './includes/loginUsuario.php',
     method: 'POST',
