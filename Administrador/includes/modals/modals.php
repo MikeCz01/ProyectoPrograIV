@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="tituloModal">Nuevo Usuario</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
         <form id="formUsuario" name="formUsuario">
@@ -37,7 +37,7 @@
             </select>
           </div> 
             <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             <button class="btn btn-primary" id="action" type="submit">Guardar</button>
         </div>
         </form>

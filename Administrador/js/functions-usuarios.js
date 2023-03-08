@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function(){
         },
         "ajax":{
             "url":"./models/usuarios/table_usuarios.php",
-            "dataSrc":"",
+            "dataSrc":""
         },
         "columns":[
             {"data":"acciones"},
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function(){
         var estado = document.querySelector('#listEstado').value;
 
         if(nombre == "" || usuario == ""){
-            swal('Atención','Todos los campos son obligatorios','warning');
+            swal('Atención','Todos los campos son obligatorios','error');
             return false;
         }
 
@@ -48,13 +48,13 @@ document.addEventListener('DOMContentLoaded', function(){
         request.onreadystatechange = function(){
             if(request.readyState == 4 && request.status == 200){
                 var data = JSON.parse(request.responseText);
-                if(data.status){
+                if(request.status){
                     $('#modalUsuario').modal('hide'); 
                     formUsuario.reset();
                     swal('Usuario',data.msg,'success');
                     tableusuarios.ajax.reload();
                 }else{
-                    swal('Usuario',data.msg,'warning');
+                    swal('Usuario',data.msg,'error');
                 }
             }
         }
