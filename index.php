@@ -32,7 +32,7 @@
                 </ul>
                 <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <form action="" method="POST" onsubmit="return validar()">
+                <form action="" onsubmit="return validar()">
                     <label for="usuario">Usuario</label>
                     <input type="text" name="usuario" id="usuario" placeholder="Nombre de usuario">
                     <label for="password">Contraseña</label>
@@ -42,7 +42,7 @@
                 </form>
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                <form action="" method="POST" onsubmit="return validar()">
+                <form action="" onsubmit="return validar()">
                     <label for="usuario">Usuario</label>
                     <input type="text" name="usuario" id="usuarioProfesor" placeholder="Nombre de usuario">
                     <label for="password">Contraseña</label>
@@ -55,8 +55,8 @@
                 </div>
         </div>    
     </header>  
-    <script src="js.jquery-3.3.1.min.js"></script>
-    <script src="js/login.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+    <script src="js/login.js"></script>
 </body>
 </html>

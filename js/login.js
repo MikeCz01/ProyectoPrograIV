@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
     $('#loginUsuario').on('click',function(){
         loginUsuario();
@@ -10,7 +11,7 @@ $(document).ready(function(){
 function loginUsuario() {
     var login = $('#usuario').val();
     var pass = $('#pass').val();
-
+debugger;
 $.ajax({
     url: './includes/loginUsuario.php',
     method: 'POST',
@@ -23,9 +24,9 @@ $.ajax({
        if(data.indexOf('Redirecting') >= 0) {
            window.location = 'Administrador/';  
         }else if(data.indexOf('vacios') >= 0){
-            Swal.fire(":(", "Todos los campos son obligatorios", "error");
+            Alert("Todos los campos son obligatorios");
         }else if(data.indexOf('Usuario o contraseña incorrectos') >= 0){
-            Swal.fire(":(", "El usuario o la contraseña son incorrectos", "error");
+            Alert("El usuario o la contraseña son incorrectos");
         }
 }
 })
