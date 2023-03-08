@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function(){
             "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
         },
         "ajax":{
-            "url":"./models/usuarios/tablaUsuarios.php",
+            "url":"./models/usuarios/table_usuarios.php",
             "dataSrc":"",
         },
         "columns":[

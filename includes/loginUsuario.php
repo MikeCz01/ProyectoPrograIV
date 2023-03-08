@@ -29,11 +29,11 @@ if(!empty($_POST)){
  }
  else{
      echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert"></button>Usuario o Clave
-     incorrectose/div>';
+     incorrectos </div>';
 }
   } else {
      echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert"></button>Usuario o Clave
-     incorrectose/div>';
+     incorrectos </div>';
 }
 }
 }
