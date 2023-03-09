@@ -2,7 +2,7 @@
  require_once '../../../includes/conexion.php';
 
  if(!empty($_POST)){
-    if(empty($_POST['nombre']) || empty($_POST['direccion']) || empty($POST_['cedula']) || empty($POST_['telefono']) || empty($POST_['correo']) || empty($POST_['nivel_est'])){
+    if(empty($_POST['nombre']) || empty($_POST['direccion']) || empty($_POST['cedula']) || empty($_POST['telefono']) || empty($_POST['correo']) || empty($_POST['nivel_est'])){
         $respuesta = array('status' => false, 'msg' => 'Todos los campos son necesarios');
     }else{
         $idprofesor = $_POST['idprofesor'];
@@ -17,9 +17,9 @@
 
         $clave = password_hash($clave,PASSWORD_DEFAULT);
 
-        $sql = 'SELECT * FROM profesores WHERE cedula = ? AND profesor_id !=? AND estado !=0';
+        $sql = 'SELECT * FROM profesor WHERE cedula = ? AND profesor_id !=? AND estado !=0';
         $query = $pdo->prepare($sql);
-        $query->execute(array($usuario));
+        $query->execute(array($cedula,$idprofesor));
         $result = $query -> fetch(PDO::FETCH_ASSOC);
 
         if($result > 0){

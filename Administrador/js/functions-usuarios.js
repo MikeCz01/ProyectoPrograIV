@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function(){
         var rol = document.querySelector('#listRol').value;
         var estado = document.querySelector('#listEstado').value;
 
-        if(nombre == "" || usuario == "" || clave ==""){
+        if(nombre == "" || usuario == ""){
             swal('Atención','Todos los campos son obligatorios','error');
             return false;
         }
