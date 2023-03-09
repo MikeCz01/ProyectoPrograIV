@@ -9,6 +9,7 @@
       </div>
       <ul class="app-menu">
       <li><a class="app-menu__item" href="lista_usuarios.php"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Usuarios</span></a></li>
+      <li><a class="app-menu__item" href="lista_profesores.php"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Docentes</span></a></li>
         <li><a class="app-menu__item" href="../logout.php"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Log Out</span></a></li>
       </ul>
     </aside>

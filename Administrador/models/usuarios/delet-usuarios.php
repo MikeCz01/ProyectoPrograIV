@@ -4,7 +4,7 @@
  if($_POST){
     $idusario = $_POST['idususario'];
 
-    $sql = "UPDATE usuarios SER estado = 0 WHERE usuario_id = ?";
+    $sql = "UPDATE usuarios SET estado = 0 WHERE usuario_id = ?";
     $query = $pdo -> prepare($sql);
     $result =$query->execute(array($idusario));
 

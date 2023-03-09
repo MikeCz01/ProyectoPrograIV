@@ -12,5 +12,6 @@
     <script type="text/javascript" src="../js/plugins/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
     <script src="js/functions-usuarios.js"></script>
+    <script src="js/functions-profesores.js"></script>
   </body>
 </html>

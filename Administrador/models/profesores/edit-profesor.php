@@ -2,11 +2,11 @@
 require_once '../../../includes/conexion.php';
 
 if(!empty($_GET)){
-    $idusuario = $_GET['idusuario'];
+    $idprofesor = $_GET['idprofesor'];
 
-    $sql = 'SELECT * FROM usuarios WHERE usuario_id = ?';
+    $sql = 'SELECT * FROM profesor WHERE profesor_id = ?';
     $query = $pdo -> prepare($sql);
-    $query -> execute(array($idusuario));
+    $query -> execute(array($idprofesor));
     $result = $query -> fetch(PDO::FETCH_ASSOC);
 
     if(empty($result)){
