@@ -14,7 +14,7 @@
 
         $clave = password_hash($clave,PASSWORD_DEFAULT);
 
-        $sql = 'SELECT * FROM usuarios WHERE usuario = ? AND usuario_id != ?';
+        $sql = 'SELECT * FROM usuarios WHERE usuario = ? AND usuario_id != ? AND estado !=0';
         $query = $pdo->prepare($sql);
         $query->execute(array($usuario));
         $result = $query -> fetch(PDO::FETCH_ASSOC);

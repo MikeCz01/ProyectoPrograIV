@@ -92,8 +92,45 @@ function editarUsuario(id){
 
                     $('#modalUsuario').modal('show'); 
                 }else{
-                    swal('Usuario',data.msg,'warning');
+                    swal('Atención',data.msg,'error');
                 }
             }
         }
+}
+
+function eliminarUsuario(id){
+    var idusuario = id;
+
+    swal({
+       title: "Eliminar Usuario",
+       text: "¿Desea eliminar este usuario?",
+       type: "warning",
+       showCancelButton: true,
+       confirmButtontext: "Si, eliminar",
+       cancelbuttontext: "No, cancelar",
+       closeOnConfirm: false,
+       closeOnCancel: true 
+    },function(confirm){
+        if(confirm){
+           
+     var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
+
+     var url= './models/usuarios/delet-usuarios.php';
+     request.open('POST', url, true);
+     var strData  = "idusuario="+idusuario;
+     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+     request.send(strData);
+     request.onreadystatechange = function(){
+         if(request.readyState == 4 && request.status == 200){
+             var data = JSON.parse(request.responseText);
+             if(data.status){
+                swal('Eliminar',data.msg,'sucess');
+                tableusuarios.ajax.reload();
+             }else{
+                 swal('Atención',data.msg,'error');
+             }
+         }
+     } 
+        }
+    })
 }
