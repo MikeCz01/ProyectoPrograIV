@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function(){
         var rol = document.querySelector('#listRol').value;
         var estado = document.querySelector('#listEstado').value;
 
-        if(nombre == "" || usuario == ""){
+        if(nombre == "" || usuario == "" || clave ==""){
             swal('Atención','Todos los campos son obligatorios','error');
             return false;
         }
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function(){
         var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
         var url= './models/usuarios/ajax-usuarios.php';
         var form = new FormData(formUsuario);
-        request.open('POST', url, true);
+        request.open('POST',url,true);
         request.send(form);
         request.onreadystatechange = function(){
             if(request.readyState == 4 && request.status == 200){
