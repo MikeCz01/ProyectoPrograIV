@@ -15,6 +15,6 @@ if(!empty($_GET)){
         $respuesta = array('status' => true, 'data' => $result);
     }
      
-    echo json_encode($respuesta, json_UNESCAPED_UNICODE);
+    echo json_encode($respuesta, JSON_UNESCAPED_UNICODE);
 }
 ?>

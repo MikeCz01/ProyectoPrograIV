@@ -48,7 +48,7 @@
                     $respuesta = array('status' => false, 'msg' => 'Usuario actualizado correctamente');
                 }
              }
-       
+            }
     }
     echo json_encode($respuesta, JSON_UNESCAPED_UNICODE);
 }

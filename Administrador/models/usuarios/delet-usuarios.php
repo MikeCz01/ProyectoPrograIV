@@ -2,11 +2,11 @@
  require_once '../../../includes/conexion.php';
 
  if($_POST){
-    $idusario = $_POST['idususario'];
+    $idusuario = $_POST['idusuario'];
 
     $sql = "UPDATE usuarios SET estado = 0 WHERE usuario_id = ?";
     $query = $pdo -> prepare($sql);
-    $result =$query->execute(array($idusario));
+    $result =$query->execute(array($idusuario));
 
     if($result){
         $respuesta = array('status' => true, 'msg' => 'Usuario eliminado correctamente');
