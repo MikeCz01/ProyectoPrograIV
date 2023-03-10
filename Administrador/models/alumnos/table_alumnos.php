@@ -1,7 +1,7 @@
 <?php
     require_once '../../../includes/conexion.php';
 
-    $sql = 'SELECT * FROM profesor WHERE estado !=0';
+    $sql = 'SELECT * FROM alumnos WHERE estado !=0';
     $query = $pdo -> prepare($sql);
     $query ->execute();
 
@@ -13,9 +13,9 @@
             $consulta[$i]['estado']= '<span class="badge badge-danger">Inactivo</span>';
         }
 
-        $consulta[$i]['acciones']= '
-        <button class="btn btn-primary btn-sm" title="Editar" onclick="editarProfesor('.$consulta[$i]['profesor_id'].')">Editar</button>
-        <button class="btn btn-danger btm-sm" title="Eliminar" onclick="eliminarProfesor('.$consulta[$i]['profesor_id'].')">Eliminar</button>
+        $consulta[$i]['acciones'] = '
+        <button class="btn btn-primary btn-sm" title="Editar" onclick="editarAlumno('.$consulta[$i]['alumno_id'].')">Editar</button>
+        <button class="btn btn-danger btn-sm" title="Eliminar" onclick="eliminarAlumno('.$consulta[$i]['alumno_id'].')">Eliminar</button>
         ';
      }
 

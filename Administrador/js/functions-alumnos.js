@@ -1,25 +1,27 @@
-$('#tableprofesores').DataTable();
+$('#tablealumnos').DataTable();
 var tableprofesores;
 document.addEventListener('DOMContentLoaded', function(){
-    tableprofesores = $('#tableprofesores').DataTable({
+    tablealumnos = $('#tablealumnos').DataTable({
         "aProcessing": true,
         "aServerSide": true,
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
         },
         "ajax":{
-            "url":"./models/profesores/table_profesores.php",
+            "url":"./models/alumnos/table_alumnos.php",
             "dataSrc":""
         },
         "columns":[
             {"data":"acciones"},
-            {"data":"profesor_id"},
-            {"data":"nombre"},
+            {"data":"alumno_id"},
+            {"data":"nombre_alumno"},
+            {"data":"edad"},
             {"data":"direccion"},
             {"data":"cedula"},
             {"data":"telefono"},
             {"data":"correo"},
-            {"data":"nivel_est"},
+            {"data":"fecha_nac"},
+            {"data":"fecha_registro"},
             {"data":"estado"}
         ],
         "responsive": true,
@@ -27,27 +29,28 @@ document.addEventListener('DOMContentLoaded', function(){
         "iDisplayLength":10,
         "order": [[0,"asc"]]
     });
-    var formProfesor = document.querySelector('#formProfesor');
-    formProfesor.onsubmit = function(e){
+    var formAlumno= document.querySelector('#formAlumno');
+    formAlumno.onsubmit = function(e){
         e.preventDefault();
 
-        var idprofesor = document.querySelector('#idprofesor').value;
+        var idalumno = document.querySelector('#idalumno').value;
         var nombre = document.querySelector('#nombre').value;
+        var edad = document.querySelector('#edad').value;
         var direccion = document.querySelector('#direccion').value;
         var cedula = document.querySelector('#cedula').value;
-        var clave = document.querySelector('#clave').value;
         var telefono = document.querySelector('#telefono').value;
         var correo = document.querySelector('#correo').value;
-        var nivel_est = document.querySelector('#nivel_est').value;
+        var fecha_nac= document.querySelector('#fecha_nac').value;
+        var fecha_reg = document.querySelector('#fecha_reg').value;
         var estado = document.querySelector('#estado').value;
-
-        if(nombre == '' || direccion == '' || cedula == '' || telefono == '' || correo == '' || nivel_est == ''){
+        
+        if(nombre == '' || direccion == '' || cedula == '' || telefono == '' || correo == '' || fecha_nac== '' || fecha_reg== ''){
             swal('Atención','Todos los campos son obligatorios','error');
             return false;
         }
 
         var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
-        var url= './models/profesores/ajax-profesores.php';
+        var url= './models/alumnos/ajax-alumnos.php';
         var form = new FormData(formProfesor);
         request.open('POST',url,true);
         request.send(form);
@@ -55,10 +58,10 @@ document.addEventListener('DOMContentLoaded', function(){
             if(request.readyState == 4 && request.status == 200) {
                 var data = JSON.parse(request.responseText);
                 if(request.status){
-                    $('#modalProfesor').modal('hide'); 
-                    formProfesor.reset();
-                    swal('Profesor',data.msg,'success');
-                    tableprofesores.ajax.reload();
+                    $('#modalAlumno').modal('hide'); 
+                    formAlumno.reset();
+                    swal('Alumno',data.msg,'success');
+                    tablealumnos.ajax.reload();
                 }else{
                     swal('Usuario',data.msg,'error');
                 }
@@ -69,21 +72,21 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 function openModal(){
-    document.querySelector('#idprofesor').value = '';
-    document.querySelector('#tituloModal').innerHTML = 'Nuevo Docente';
+    document.querySelector('#idalumno').value = '';
+    document.querySelector('#tituloModal').innerHTML = 'Nuevo Alumno';
     document.querySelector('#action').innerHTML = 'Guardar';
-    document.querySelector('#formProfesor').reset();
-  $('#modalProfesor').modal('show');   
+    document.querySelector('#formAlumno').reset();
+  $('#modalAlumno').modal('show');   
 }
 
-function editarProfesor(id){
-     var idprofesor = id;
-     document.querySelector('#tituloModal').innerHTML = 'Actualizar Docente';
+function editarAlumno(id){
+     var idalumno = id;
+     document.querySelector('#tituloModal').innerHTML = 'Actualizar Alumno';
      document.querySelector('#action').innerHTML = 'Actualizar';
 
      var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
 
-        var url= './models/profesores/edit-profesor.php?idprofesor='+idprofesor;
+        var url= './models/alumnos/edit-alumno.php?idalumno='+idalumno;
         request.open('GET', url, true);
         request.send();
         request.onreadystatechange = function(){
@@ -91,16 +94,18 @@ function editarProfesor(id){
                 var data = JSON.parse(request.responseText);
                 if(data.status){
 
-                    document.querySelector('#idprofesor').value = data.data.profesor_id;
-                    document.querySelector('#nombre').value = data.data.nombre;
+                    document.querySelector('#idalumno').value = data.data.alumno_id;
+                    document.querySelector('#nombre').value = data.data.edad;
+                    document.querySelector('#edad').value = data.data.nombre_alumno;
                     document.querySelector('#direccion').value = data.data.direccion;
                     document.querySelector('#cedula').value = data.data.cedula;
                     document.querySelector('#telefono').value = data.data.telefono;
                     document.querySelector('#correo').value = data.data.correo;
-                    document.querySelector('#nivel_est').value = data.data.nivel_est;
+                    document.querySelector('#fecha_nac').value = data.data.fecha_nac;
+                    document.querySelector('#fecha_reg').value = data.data.fecha_registro;
                     document.querySelector('#estado').value = data.data.estado;
 
-                    $('#modalProfesor').modal('show'); 
+                    $('#modalAlumno').modal('show'); 
                 }else{
                     swal('Atención',data.msg,'error');
                 }
@@ -108,12 +113,12 @@ function editarProfesor(id){
         }
 }
 
-function eliminarProfesor(id){
-    var idprofesor = id;
+function eliminarAlumno(id){
+    var idalumno = id;
 
     swal({
-       title: "Eliminar Docente",
-       text: "¿Desea eliminar este Docente?",
+       title: "Eliminar Alumno",
+       text: "¿Desea eliminar este Alumno?",
        type: "warning",
        showCancelButton: true,
        confirmButtontext: "Si, eliminar",
@@ -125,9 +130,9 @@ function eliminarProfesor(id){
            
      var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
 
-     var url= './models/profesores/delet-profesor.php';
+     var url= './models/alumnos/delet-alumno.php';
      request.open('POST', url, true);
-     var strData  = "idprofesor="+idprofesor;
+     var strData  = "idalumno="+idalumno;
      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
      request.send(strData);
      request.onreadystatechange = function(){
@@ -135,7 +140,7 @@ function eliminarProfesor(id){
              var data = JSON.parse(request.responseText);
              if(data.status){
                 swal('Eliminar',data.msg,'sucess');
-                tableprofesores.ajax.reload();
+                tablealumnos.ajax.reload();
              }else{
                  swal('Atención',data.msg,'error');
              }

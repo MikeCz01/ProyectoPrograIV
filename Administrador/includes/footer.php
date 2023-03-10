@@ -13,5 +13,6 @@
     <script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
     <script src="js/functions-usuarios.js"></script>
     <script src="js/functions-profesores.js"></script>
+    <script src="js/functions-alumnos.js"></script>
   </body>
 </html>

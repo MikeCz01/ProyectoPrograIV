@@ -26,9 +26,9 @@
             $respuesta = array('status' => false, 'msg' => 'Docente Existente'); 
          }else{
              if($idprofesor == 0){
-                 $sqlInsert = 'INSERT INTO profesor (nombre, direccion, cedula, clave, telefono, correo, nivel_est, estado) VALUES (?,?,?,?,?,?,?,?)';
+                 $sqlInsert = 'INSERT INTO profesor (nombre,direccion,cedula,clave,telefono,correo,nivel_est,estado) VALUES (?,?,?,?,?,?,?,?)';
                  $queryInsert = $pdo -> prepare($sqlInsert);
-                 $request = $queryInsert -> execute(array($nombre, $direccion, $cedula $clave, $telefono,$correo,$nivel_est, $estado));
+                 $request = $queryInsert -> execute(array($nombre,$direccion,$cedula,$clave, $telefono,$correo,$nivel_est,$estado));
                  $accion = 1;
              }else{
                  if(empty($clave)){
