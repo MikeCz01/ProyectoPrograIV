@@ -95,8 +95,8 @@ function editarAlumno(id){
                 if(data.status){
 
                     document.querySelector('#idalumno').value = data.data.alumno_id;
-                    document.querySelector('#nombre').value = data.data.edad;
-                    document.querySelector('#edad').value = data.data.nombre_alumno;
+                    document.querySelector('#nombre').value = data.data.nombre_alumno;;
+                    document.querySelector('#edad').value = data.data.edad;
                     document.querySelector('#direccion').value = data.data.direccion;
                     document.querySelector('#cedula').value = data.data.cedula;
                     document.querySelector('#telefono').value = data.data.telefono;
