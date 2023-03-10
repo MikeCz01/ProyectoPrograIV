@@ -32,7 +32,7 @@
                  $request = $queryInsert -> execute(array($nombre,$edad,$direccion,$cedula,$telefono,$correo,$fecha_nac,$fecha_reg, $estado));
                  $accion = 1;
              }else{
-                     $sqlUpdate = 'UPDATE alumnos SET nombre = ?, edad = ?, direccion = ?, cedula = ?, telefono = ?, correo = ?, fecha_nac = ?, fecha_registro, estado =? WHERE alumno_id =?';
+                     $sqlUpdate = 'UPDATE alumnos SET nombre_alumno = ?, edad = ?, direccion = ?, cedula = ?, telefono = ?, correo = ?, fecha_nac = ?, fecha_registro, estado =? WHERE alumno_id =?';
                      $queryUpdate = $pdo -> prepare($sqlUpdate);
                      $request = $queryUpdate -> execute(array($nombre,$edad,$direccion,$cedula,$telefono,$correo,$fecha_nac,$fecha_reg, $estado,$idalumno));
                      $accion = 2;

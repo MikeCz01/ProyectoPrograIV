@@ -22,7 +22,7 @@
                 <table class="table table-hover table-bordered" id="tableprofesores">
                   <thead>
                     <tr>
-                      <th>Aciones</th>
+                      <th>Acciones</th>
                       <th>ID</th>
                       <th>Nombre</th>
                       <th>Dirección</th>

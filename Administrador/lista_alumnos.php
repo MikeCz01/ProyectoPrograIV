@@ -22,7 +22,7 @@
                 <table class="table table-hover table-bordered" id="tablealumnos">
                   <thead>
                     <tr>
-                      <th>Aciones</th>
+                      <th>Acciones</th>
                       <th>ID</th>
                       <th>Nombre</th>
                       <th>Edad</th>

@@ -14,5 +14,6 @@
     <script src="js/functions-usuarios.js"></script>
     <script src="js/functions-profesores.js"></script>
     <script src="js/functions-alumnos.js"></script>
+    <script src="js/functions-grados.js"></script>
   </body>
 </html>
