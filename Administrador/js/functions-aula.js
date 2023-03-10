@@ -1,20 +1,20 @@
-$('#tablegrados').DataTable();
-var tablegrados;
+$('#tableaulas').DataTable();
+var tableaulas;
 document.addEventListener('DOMContentLoaded', function(){
-    tablealumnos = $('#tablegrados').DataTable({
+    tableaulas = $('#tableaulas').DataTable({
         "aProcessing": true,
         "aServerSide": true,
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
         },
         "ajax":{
-            "url":"./models/grados/table_grados.php",
+            "url":"./models/aulas/table_aulas.php",
             "dataSrc":""
         },
         "columns":[
             {"data":"acciones"},
-            {"data":"grado_id"},
-            {"data":"nombre_grado"},
+            {"data":"aula_id"},
+            {"data":"nombre_aula"},
             {"data":"estado"}
         ],
         "responsive": true,
@@ -22,11 +22,11 @@ document.addEventListener('DOMContentLoaded', function(){
         "iDisplayLength":10,
         "order": [[0,"asc"]]
     });
-    var formGrado= document.querySelector('#formGrado');
-    formGrado.onsubmit = function(e){
+    var formAula= document.querySelector('#formAula');
+    formAula.onsubmit = function(e){
         e.preventDefault();
 
-        var idgrado = document.querySelector('#idgrado').value;
+        var idaula = document.querySelector('#idaula').value;
         var nombre = document.querySelector('#nombre').value;
         var estado = document.querySelector('#estado').value;
         
@@ -36,17 +36,17 @@ document.addEventListener('DOMContentLoaded', function(){
         }
 
         var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
-        var url= './models/grados/ajax-grados.php';
-        var form = new FormData(formGrado);
+        var url= './models/aulas/ajax-aulas.php';
+        var form = new FormData(formAula);
         request.open('POST',url,true);
         request.send(form);
         request.onreadystatechange = function(){
             if(request.readyState == 4 && request.status == 200) {
                 var data = JSON.parse(request.responseText);
                 if(request.status){
-                    $('#modalGrado').modal('hide'); 
-                    formGrado.reset();
-                    swal('Grado',data.msg,'success');
+                    $('#modalAula').modal('hide'); 
+                    formAula.reset();
+                    swal('Aula',data.msg,'success');
                     tablegrados.ajax.reload();
                 }else{
                     swal('Atención',data.msg,'error');
@@ -58,21 +58,21 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 function openModal(){
-    document.querySelector('#idgrado').value = '';
-    document.querySelector('#tituloModal').innerHTML = 'Nuevo Grado';
+    document.querySelector('#idaula').value = '';
+    document.querySelector('#tituloModal').innerHTML = 'Nueva Aula';
     document.querySelector('#action').innerHTML = 'Guardar';
-    document.querySelector('#formGrado').reset();
-  $('#modalGrado').modal('show');   
+    document.querySelector('#formAula').reset();
+  $('#modalAula').modal('show');   
 }
 
-function editarGrado(id){
-     var idgrado = id;
-     document.querySelector('#tituloModal').innerHTML = 'Actualizar Grado';
+function editarAula(id){
+     var idaula = id;
+     document.querySelector('#tituloModal').innerHTML = 'Actualizar Aula';
      document.querySelector('#action').innerHTML = 'Actualizar';
 
      var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
 
-        var url= './models/grados/edit-grado.php?idgrado='+idgrado;
+        var url= './models/aulas/edit-aula.php?idaula='+idaula;
         request.open('GET', url, true);
         request.send();
         request.onreadystatechange = function(){
@@ -80,11 +80,11 @@ function editarGrado(id){
                 var data = JSON.parse(request.responseText);
                 if(data.status){
 
-                    document.querySelector('#idgrado').value = data.data.grado_id;
-                    document.querySelector('#nombre').value = data.data.nombre_grado;
+                    document.querySelector('#idaula').value = data.data.aula_id;
+                    document.querySelector('#nombre').value = data.data.nombre_aula;
                     document.querySelector('#estado').value = data.data.estado;
 
-                    $('#modalGrado').modal('show'); 
+                    $('#modalAula').modal('show'); 
                 }else{
                     swal('Atención',data.msg,'error');
                 }
@@ -92,12 +92,12 @@ function editarGrado(id){
         }
 }
 
-function eliminarGrado(id){
-    var idgrado = id;
+function eliminarAula(id){
+    var idaula = id;
 
     swal({
-       title: "Eliminar Grado",
-       text: "¿Desea eliminar este Grado?",
+       title: "Eliminar Aula",
+       text: "¿Desea eliminar este Aula?",
        type: "warning",
        showCancelButton: true,
        confirmButtontext: "Si, eliminar",
@@ -109,9 +109,9 @@ function eliminarGrado(id){
            
      var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
 
-     var url= './models/grados/delet-grado.php';
+     var url= './models/aulas/delet-aula.php';
      request.open('POST', url, true);
-     var strData  = "idgrado="+idgrado;
+     var strData  = "idaula="+idaula;
      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
      request.send(strData);
      request.onreadystatechange = function(){
@@ -119,7 +119,7 @@ function eliminarGrado(id){
              var data = JSON.parse(request.responseText);
              if(data.status){
                 swal('Eliminar',data.msg,'sucess');
-                tablegrados.ajax.reload();
+                tableaulas.ajax.reload();
              }else{
                  swal('Atención',data.msg,'error');
              }
