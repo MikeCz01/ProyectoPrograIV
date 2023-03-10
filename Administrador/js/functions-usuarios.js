@@ -67,7 +67,7 @@ function openModal(){
     document.querySelector('#tituloModal').innerHTML = 'Nuevo Usuario';
     document.querySelector('#action').innerHTML = 'Guardar';
     document.querySelector('#formUsuario').reset();
-  $('#modalUsuario').modal('show');   
+    $('#modalUsuario').modal('show');   
 }
 
 function editarUsuario(id){

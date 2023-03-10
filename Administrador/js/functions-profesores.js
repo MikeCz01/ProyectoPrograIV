@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function(){
                     swal('Profesor',data.msg,'success');
                     tableprofesores.ajax.reload();
                 }else{
-                    swal('Usuario',data.msg,'error');
+                    swal('Profesor',data.msg,'error');
                 }
             }
         }

@@ -2,7 +2,7 @@
  require_once '../../../includes/conexion.php';
 
  if(!empty($_POST)){
-    if(empty($_POST['nombre']) || empty($_POST['usuario'])){
+    if(empty($_POST['nombre']) || empty($_POST['usuario']) || empty($POST_['clave'])){
         $respuesta = array('status' => false, 'msg' => 'Todos los campos son necesarios');
     }else{
         $idusuario = $_POST['idusuario'];
@@ -14,10 +14,10 @@
 
         $clave = password_hash($clave,PASSWORD_DEFAULT);
 
-        $sql = 'SELECT * FROM usuarios WHERE usuario = ? AND usuario_id != ? AND estado != 0';
+        $sql = 'SELECT * FROM usuarios WHERE usuario = ? ';
         $query = $pdo->prepare($sql);
         $query->execute(array($usuario));
-        $result = $query -> fetch(PDO::FETCH_ASSOC);
+        $result = $query->fetch(PDO::FETCH_ASSOC);
 
         if($result > 0){
            $respuesta = array('status' => false, 'msg' => 'Usuario Existente'); 

@@ -1,7 +1,7 @@
 $('#tablegrados').DataTable();
 var tablegrados;
 document.addEventListener('DOMContentLoaded', function(){
-    tablealumnos = $('#tablegrados').DataTable({
+    tablegrados = $('#tablegrados').DataTable({
         "aProcessing": true,
         "aServerSide": true,
         "language": {
