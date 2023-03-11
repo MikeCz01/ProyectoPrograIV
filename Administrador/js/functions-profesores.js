@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 function openModal(){
-    document.querySelector('#idprofesor').value = '';
+    document.querySelector('#idprofesor').value = "";
     document.querySelector('#tituloModal').innerHTML = 'Nuevo Docente';
     document.querySelector('#action').innerHTML = 'Guardar';
     document.querySelector('#formProfesor').reset();

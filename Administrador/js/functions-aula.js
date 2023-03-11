@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function(){
                     $('#modalAula').modal('hide'); 
                     formAula.reset();
                     swal('Aula',data.msg,'success');
-                    tablegrados.ajax.reload();
+                    tableaulas.ajax.reload();
                 }else{
                     swal('Atención',data.msg,'error');
                 }
@@ -58,11 +58,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 function openModal(){
-    document.querySelector('#idaula').value = '';
+    document.querySelector('#idaula').value = "";
     document.querySelector('#tituloModal').innerHTML = 'Nueva Aula';
     document.querySelector('#action').innerHTML = 'Guardar';
     document.querySelector('#formAula').reset();
-  $('#modalAula').modal('show');   
+    $('#modalAula').modal('show');   
 }
 
 function editarAula(id){

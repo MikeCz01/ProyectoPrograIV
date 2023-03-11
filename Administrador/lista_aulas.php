@@ -25,7 +25,6 @@
                       <th>Acciones</th>
                       <th>ID</th>
                       <th>Nombre del Aula</th>
-                      <th>Edad</th>
                       <th>Estado</th>
                     </tr>
                   </thead>
