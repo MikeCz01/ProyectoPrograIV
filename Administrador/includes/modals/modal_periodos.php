@@ -1,15 +1,15 @@
-<div class="modal fade" id="modalAula" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="modalPeriodo" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="tituloModalAulas">Nueva Aula</h5>
+        <h5 class="modal-title" id="tituloModalPeriodo">Nuevo Periodo</h5>
         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <form id="formAula" name="formAula">
-          <input type="hidden" name="idaula" id="idaula" value="">
+        <form id="formPeriodo" name="formPeriodo">
+          <input type="hidden" name="idperiodo" id="idperiodo" value="">
           <div class="form-group">
-            <label for="control-label">Nombre del Aula:</label>
+            <label for="control-label">Nombre del Periodo:</label>
             <input type="text" class="form-control" name="nombre" id="nombre">
           </div>
           <div class="form-group">

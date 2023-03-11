@@ -68,9 +68,9 @@ document.addEventListener('DOMContentLoaded', function(){
 })
 
 
-function openModal(){
+function openModalDocentes(){
     document.querySelector('#idprofesor').value = "";
-    document.querySelector('#tituloModal').innerHTML = 'Nuevo Docente';
+    document.querySelector('#tituloModalDocente').innerHTML = 'Nuevo Docente';
     document.querySelector('#action').innerHTML = 'Guardar';
     document.querySelector('#formProfesor').reset();
   $('#modalProfesor').modal('show');   
@@ -78,7 +78,7 @@ function openModal(){
 
 function editarProfesor(id){
      var idprofesor = id;
-     document.querySelector('#tituloModal').innerHTML = 'Actualizar Docente';
+     document.querySelector('#tituloModalDocente').innerHTML = 'Actualizar Docente';
      document.querySelector('#action').innerHTML = 'Actualizar';
 
      var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');

@@ -71,9 +71,9 @@ document.addEventListener('DOMContentLoaded', function(){
 })
 
 
-function openModal(){
+function openModalAlumnos(){
     document.querySelector('#idalumno').value = '';
-    document.querySelector('#tituloModal').innerHTML = 'Nuevo Alumno';
+    document.querySelector('#tituloModalAlumnos').innerHTML = 'Nuevo Alumno';
     document.querySelector('#action').innerHTML = 'Guardar';
     document.querySelector('#formAlumno').reset();
   $('#modalAlumno').modal('show');   
@@ -81,7 +81,7 @@ function openModal(){
 
 function editarAlumno(id){
      var idalumno = id;
-     document.querySelector('#tituloModal').innerHTML = 'Actualizar Alumno';
+     document.querySelector('#tituloModalAlumnos').innerHTML = 'Actualizar Alumno';
      document.querySelector('#action').innerHTML = 'Actualizar';
 
      var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');

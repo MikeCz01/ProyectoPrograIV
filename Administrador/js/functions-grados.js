@@ -57,9 +57,9 @@ document.addEventListener('DOMContentLoaded', function(){
 })
 
 
-function openModal(){
+function openModalGrados(){
     document.querySelector('#idgrado').value = '';
-    document.querySelector('#tituloModal').innerHTML = 'Nuevo Grado';
+    document.querySelector('#tituloModalGrado').innerHTML = 'Nuevo Grado';
     document.querySelector('#action').innerHTML = 'Guardar';
     document.querySelector('#formGrado').reset();
   $('#modalGrado').modal('show');   
@@ -67,7 +67,7 @@ function openModal(){
 
 function editarGrado(id){
      var idgrado = id;
-     document.querySelector('#tituloModal').innerHTML = 'Actualizar Grado';
+     document.querySelector('#tituloModalGrado').innerHTML = 'Actualizar Grado';
      document.querySelector('#action').innerHTML = 'Actualizar';
 
      var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');

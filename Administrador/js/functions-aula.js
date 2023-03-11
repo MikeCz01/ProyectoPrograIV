@@ -57,9 +57,9 @@ document.addEventListener('DOMContentLoaded', function(){
 })
 
 
-function openModal(){
+function openModalAula(){
     document.querySelector('#idaula').value = "";
-    document.querySelector('#tituloModal').innerHTML = 'Nueva Aula';
+    document.querySelector('#tituloModalAulas').innerHTML = 'Nueva Aula';
     document.querySelector('#action').innerHTML = 'Guardar';
     document.querySelector('#formAula').reset();
     $('#modalAula').modal('show');   
@@ -67,7 +67,7 @@ function openModal(){
 
 function editarAula(id){
      var idaula = id;
-     document.querySelector('#tituloModal').innerHTML = 'Actualizar Aula';
+     document.querySelector('#tituloModalAulas').innerHTML = 'Actualizar Aula';
      document.querySelector('#action').innerHTML = 'Actualizar';
 
      var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');

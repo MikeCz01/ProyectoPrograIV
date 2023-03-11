@@ -6,7 +6,7 @@
       <div class="app-title">
         <div>
           <h1><i class="fa fa-dashboard"></i> Lista de Usuarios</h1>
-          <button class= "btn btn-success" type="button" onclick="openModal()">Nuevo Usuario</button>
+          <button class= "btn btn-success" type="button" onclick="openModalUsuario()">Nuevo Usuario</button>
           <br>
         </div>
         <ul class="app-breadcrumb breadcrumb">

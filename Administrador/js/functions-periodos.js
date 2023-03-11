@@ -1,22 +1,20 @@
-$('#tableusuarios').DataTable();
-var tableusuarios;
+$('#tablematerias').DataTable();
+var tableperiodos;
 document.addEventListener('DOMContentLoaded', function(){
-    tableusuarios = $('#tableusuarios').DataTable({
+    tableperiodos = $('#tableperiodos').DataTable({
         "aProcessing": true,
         "aServerSide": true,
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
         },
         "ajax":{
-            "url":"./models/usuarios/table_usuarios.php",
+            "url":"./models/periodos/table_periodos.php",
             "dataSrc":""
         },
         "columns":[
             {"data":"acciones"},
-            {"data":"usuario_id"},
-            {"data":"nombre"},
-            {"data":"usuario"},
-            {"data":"nombre_rol"},
+            {"data":"periodo_id"},
+            {"data":"nombre_periodo"},
             {"data":"estado"}
         ],
         "responsive": true,
@@ -24,37 +22,34 @@ document.addEventListener('DOMContentLoaded', function(){
         "iDisplayLength":10,
         "order": [[0,"asc"]]
     });
-    var formUsuario = document.querySelector('#formUsuario');
-    formUsuario.onsubmit = function(e){
+    var formPeriodo= document.querySelector('#formPeriodo');
+    formPeriodo.onsubmit = function(e){
         e.preventDefault();
 
-        var idusuario = document.querySelector('#idusuario').value;
+        var idperiodo = document.querySelector('#idperiodo').value;
         var nombre = document.querySelector('#nombre').value;
-        var usuario = document.querySelector('#usuario').value;
-        var clave = document.querySelector('#clave').value;
-        var rol = document.querySelector('#listRol').value;
-        var estado = document.querySelector('#listEstado').value;
-
-        if(nombre == "" || usuario == ""){
+        var estado = document.querySelector('#estado').value;
+        
+        if(nombre == ''){
             swal('Atención','Todos los campos son obligatorios','error');
             return false;
         }
 
         var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
-        var url= './models/usuarios/ajax-usuarios.php';
-        var form = new FormData(formUsuario);
+        var url= './models/periodos/ajax-periodos.php';
+        var form = new FormData(formPeriodo);
         request.open('POST',url,true);
         request.send(form);
         request.onreadystatechange = function(){
-            if(request.readyState == 4 && request.status == 200){
+            if(request.readyState == 4 && request.status == 200) {
                 var data = JSON.parse(request.responseText);
                 if(request.status){
-                    $('#modalUsuario').modal('hide'); 
-                    formUsuario.reset();
-                    swal('Usuario',data.msg,'success');
-                    tableusuarios.ajax.reload();
+                    $('#modalPeriodo').modal('hide'); 
+                    formMateria.reset();
+                    swal('Periodo',data.msg,'success');
+                    tableperiodos.ajax.reload();
                 }else{
-                    swal('Usuario',data.msg,'error');
+                    swal('Atención',data.msg,'error');
                 }
             }
         }
@@ -62,35 +57,34 @@ document.addEventListener('DOMContentLoaded', function(){
 })
 
 
-function openModalUsuario(){
-    document.querySelector('#idusuario').value = '';
-    document.querySelector('#tituloModalUsuarios').innerHTML = 'Nuevo Usuario';
+function openModalPeriodos(){
+    document.querySelector('#idperiodo').value = '';
+    document.querySelector('#tituloModalPeriodo').innerHTML = 'Nuevo Periodo';
     document.querySelector('#action').innerHTML = 'Guardar';
-    document.querySelector('#formUsuario').reset();
-    $('#modalUsuario').modal('show');   
+    document.querySelector('#formPeriodo').reset();
+  $('#modalPeriodo').modal('show');   
 }
 
-function editarUsuario(id){
-     var idusuario = id;
-     document.querySelector('#tituloModalUsuarios').innerHTML = 'Actualizar Usuario';
+function editarPeriodo(id){
+     var idperiodo = id;
+     document.querySelector('#tituloModalPeriodo').innerHTML = 'Actualizar Periodo';
      document.querySelector('#action').innerHTML = 'Actualizar';
 
      var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
 
-        var url= './models/usuarios/edit-usuarios.php?idusuario='+idusuario;
+        var url= './models/periodos/edit-periodo.php?idperiodo='+idperiodo;
         request.open('GET', url, true);
         request.send();
         request.onreadystatechange = function(){
             if(request.readyState == 4 && request.status == 200){
                 var data = JSON.parse(request.responseText);
                 if(data.status){
-                    document.querySelector('#idusuario').value = data.data.usuario_id;
-                    document.querySelector('#nombre').value = data.data.nombre;
-                    document.querySelector('#usuario').value = data.data.usuario;
-                    document.querySelector('#listRol').value = data.data.rol;
-                    document.querySelector('#listEstado').value = data.data.estado;
 
-                    $('#modalUsuario').modal('show'); 
+                    document.querySelector('#idperiodo').value = data.data.period_id;
+                    document.querySelector('#nombre').value = data.data.nombre_periodo;
+                    document.querySelector('#estado').value = data.data.estado;
+
+                    $('#modalPeriodo').modal('show'); 
                 }else{
                     swal('Atención',data.msg,'error');
                 }
@@ -98,12 +92,12 @@ function editarUsuario(id){
         }
 }
 
-function eliminarUsuario(id){
-    var idusuario = id;
+function eliminarPeriodo(id){
+    var idperiodo= id;
 
     swal({
-       title: "Eliminar Usuario",
-       text: "¿Desea eliminar este usuario?",
+       title: "Eliminar Periodo",
+       text: "¿Desea eliminar este Periodo?",
        type: "warning",
        showCancelButton: true,
        confirmButtontext: "Si, eliminar",
@@ -115,9 +109,9 @@ function eliminarUsuario(id){
            
      var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
 
-     var url= './models/usuarios/delet-usuarios.php';
+     var url= './models/periodos/delet-periodo.php';
      request.open('POST', url, true);
-     var strData  = "idusuario="+idusuario;
+     var strData  = "idperiodo="+idperiodo;
      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
      request.send(strData);
      request.onreadystatechange = function(){
@@ -125,7 +119,7 @@ function eliminarUsuario(id){
              var data = JSON.parse(request.responseText);
              if(data.status){
                 swal('Eliminar',data.msg,'sucess');
-                tableusuarios.ajax.reload();
+                tableperiodos.ajax.reload();
              }else{
                  swal('Atención',data.msg,'error');
              }

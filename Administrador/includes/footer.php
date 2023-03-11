@@ -16,5 +16,8 @@
     <script src="js/functions-alumnos.js"></script>
     <script src="js/functions-grados.js"></script>
     <script src="js/functions-aula.js"></script>
+    <script src="js/functions-materia.js"></script>
+    <script src="js/functions-periodos.js"></script>
+    <script src="js/functions-actividades.js"></script>
   </body>
 </html>

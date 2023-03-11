@@ -6,7 +6,7 @@
       <div class="app-title">
         <div>
           <h1><i class="fa fa-dashboard"></i> Lista de Grados</h1>
-          <button class= "btn btn-success" type="button" onclick="openModal()">Nuevo Grado</button>
+          <button class= "btn btn-success" type="button" onclick="openModalGrados()">Nuevo Grado</button>
           <br>
         </div>
         <ul class="app-breadcrumb breadcrumb">
@@ -25,7 +25,6 @@
                       <th>Acciones</th>
                       <th>ID</th>
                       <th>Nombre del Grado</th>
-                      <th>Edad</th>
                       <th>Estado</th>
                     </tr>
                   </thead>
