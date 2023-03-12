@@ -4,7 +4,7 @@
  * Author: Pratik Borsadiya
  * ================================*/
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,400i,700);
-@import url(https://fonts.googleapis.com/css?family=Niconne);
+@import url(https://fonts.googleapis.com/css?family=Anton);
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -14945,9 +14945,9 @@ be a descendant of the grid when it is being dragged.
           flex: 1 0 auto;
   color: #fff;
   text-align: center;
-  font-family: 'Niconne';
+  font-family: 'Anton';
   padding: 0 15px;
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 400;
   line-height: 50px;
 }
@@ -14993,7 +14993,7 @@ be a descendant of the grid when it is being dragged.
 
 .app-sidebar__toggle:focus, .app-sidebar__toggle:hover {
   color: #fff;
-  background-color: #00635a;
+  background-color: gold;
   text-decoration: none;
 }
 
@@ -15256,7 +15256,7 @@ be a descendant of the grid when it is being dragged.
 
 .app-menu__item.active, .app-menu__item:hover, .app-menu__item:focus {
   background: #0d1214;
-  border-left-color: #009688;
+  border-left-color: gold;
   text-decoration: none;
   color: #fff;
 }
@@ -15276,8 +15276,8 @@ be a descendant of the grid when it is being dragged.
 }
 
 .treeview.is-expanded [data-toggle='treeview'] {
-  border-left-color: #009688;
-  background: #0d1214;
+  border-left-color: gold;
+  background: gold;
 }
 
 .treeview.is-expanded .treeview-menu {
@@ -15296,7 +15296,7 @@ be a descendant of the grid when it is being dragged.
   -webkit-transition: max-height 0.3s ease;
   -o-transition: max-height 0.3s ease;
   transition: max-height 0.3s ease;
-  background: #2a383e;
+  background: gold;
 }
 
 .treeview-item {
@@ -15312,7 +15312,7 @@ be a descendant of the grid when it is being dragged.
 }
 
 .treeview-item.active, .treeview-item:hover, .treeview-item:focus {
-  background: #0d1214;
+  background: gold;
   text-decoration: none;
   color: #fff;
 }
@@ -15375,13 +15375,13 @@ be a descendant of the grid when it is being dragged.
     margin-left: -3px;
     line-height: 1;
     opacity: 0;
-    background: #0d1214;
+    background: gold;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
   }
   .sidebar-mini.sidenav-toggled .treeview:hover .app-menu__item {
     overflow: visible;
-    background: #0d1214;
+    background: gold;
     border-left-color: #009688;
     color: #fff;
   }

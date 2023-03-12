@@ -100,3 +100,6 @@ body {
 .app .app-sidebar, .app .app-nav, .app .app-header{
     background: #0e1f53 !important;
 }
+.app-header__logo{
+    background: #6625ce  !important;
+}
