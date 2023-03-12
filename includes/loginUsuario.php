@@ -8,7 +8,7 @@ if(!empty($_POST)){
  $login = $_POST['login'];
  $pass = $_POST['pass'];
 
- $sql = 'SELECT * FROM usuarios as u INNER JOIN rol as r ON u.rol = r.rol_id WHERE u.usuario = ?';
+ $sql = 'SELECT * FROM usuarios as u INNER JOIN rol as r ON u.rol = r.rol_id WHERE u.usuario = ? AND u.estado !=0';
  $query = $pdo->prepare($sql);
  $query->execute(array($login));
  $result = $query->fetch(PDO::FETCH_ASSOC);
@@ -18,9 +18,10 @@ if(!empty($_POST)){
         if($result['estado'] == 1) {
             $_SESSION['active'] = true;
             $_SESSION['id_usuario'] = $result['usuario_id'];
-            $_SESSION['nombre'] = $result['nombre_usuario'];
+            $_SESSION['nombre'] = $result['nombre'];
             $_SESSION['rol'] = $result['rol_id'];
             $_SESSION['nombre_rol'] = $result['nombre_rol'];
+            
          echo '<div class="alert alert-success"><button type="button" class-close" data-dismiss?"alert"></button>Redirecting</div>';
         }else{
             echo '<div class="alert alert-warning"><button type="button" class-close" data-dismiss?"alert"></button>Usuario Inactivo, comuniquese con el admininstrador</div>';

@@ -91,6 +91,12 @@ body {
     cursor: pointer;
 }
 
-.alert {
-    color: red;
+.app-sidebar__user-avatar{
+    width: 48px;
+    padding: 6px;
+    background: #fff;
+}
+
+.app .app-sidebar, .app .app-nav, .app .app-header{
+    background: #0e1f53 !important;
 }

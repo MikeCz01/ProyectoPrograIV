@@ -25,9 +25,9 @@
                  $request = $queryInsert -> execute(array($nombre,$estado));
                  $accion = 1;
              }else{
-                     $sqlUpdate = 'UPDATE materias SET nombre_periodo = ?, estado =? WHERE periodo_id =?';
+                     $sqlUpdate = 'UPDATE periodos SET nombre_periodo = ?, estado =? WHERE periodo_id =?';
                      $queryUpdate = $pdo -> prepare($sqlUpdate);
-                     $request = $queryUpdate -> execute(array($nombre,$estado,$idmateria));
+                     $request = $queryUpdate -> execute(array($nombre,$estado,$idperiodo));
                      $accion = 2;
                  
              }

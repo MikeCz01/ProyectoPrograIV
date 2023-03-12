@@ -9,9 +9,9 @@
     $result =$query->execute(array($idperiodo));
 
     if($result){
-        $respuesta = array('status' => true, 'msg' => 'Materia eliminada correctamente');
+        $respuesta = array('status' => true, 'msg' => 'Periodo eliminado correctamente');
     }else{
-        $respuesta = array('status' => false, 'msg' => 'Error al eliminar la materia');
+        $respuesta = array('status' => false, 'msg' => 'Error al eliminar el periodo');
     }
     echo json_encode($respuesta, JSON_UNESCAPED_UNICODE);
  }

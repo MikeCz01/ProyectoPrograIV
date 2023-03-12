@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 if(request.status){
                     $('#modalActividad').modal('hide'); 
                     formMateria.reset();
-                    swal('Periodo',data.msg,'success');
+                    swal('Actividad',data.msg,'success');
                     tableperiodos.ajax.reload();
                 }else{
                     swal('Atención',data.msg,'error');
@@ -57,22 +57,22 @@ document.addEventListener('DOMContentLoaded', function(){
 })
 
 
-function openModalPeriodos(){
-    document.querySelector('#idperiodo').value = '';
-    document.querySelector('#tituloModalPeriodo').innerHTML = 'Nuevo Periodo';
+function openModalActividades(){
+    document.querySelector('#idactividad').value = '';
+    document.querySelector('#tituloModalActividad').innerHTML = 'Nueva Actividad';
     document.querySelector('#action').innerHTML = 'Guardar';
-    document.querySelector('#formPeriodo').reset();
-  $('#modalPeriodo').modal('show');   
+    document.querySelector('#formActividad').reset();
+    $('#modalActividad').modal('show');   
 }
 
-function editarPeriodo(id){
-     var idperiodo = id;
-     document.querySelector('#tituloModalPeriodo').innerHTML = 'Actualizar Periodo';
+function editarActividad(id){
+     var idactividad = id;
+     document.querySelector('#tituloModalActividad').innerHTML = 'Actualizar Actividad';
      document.querySelector('#action').innerHTML = 'Actualizar';
 
      var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
 
-        var url= './models/periodos/edit-periodo.php?idperiodo='+idperiodo;
+        var url= './models/actividades/edit-actividad.php?idactividad='+idactividad;
         request.open('GET', url, true);
         request.send();
         request.onreadystatechange = function(){
@@ -80,11 +80,11 @@ function editarPeriodo(id){
                 var data = JSON.parse(request.responseText);
                 if(data.status){
 
-                    document.querySelector('#idperiodo').value = data.data.period_id;
-                    document.querySelector('#nombre').value = data.data.nombre_periodo;
+                    document.querySelector('#idactividad').value = data.data.actividad_id;
+                    document.querySelector('#nombre').value = data.data.nombre_actividad;
                     document.querySelector('#estado').value = data.data.estado;
 
-                    $('#modalPeriodo').modal('show'); 
+                    $('#modalActividad').modal('show'); 
                 }else{
                     swal('Atención',data.msg,'error');
                 }
@@ -92,12 +92,12 @@ function editarPeriodo(id){
         }
 }
 
-function eliminarPeriodo(id){
-    var idperiodo= id;
+function eliminarActividad(id){
+    var idactividad= id;
 
     swal({
-       title: "Eliminar Periodo",
-       text: "¿Desea eliminar este Periodo?",
+       title: "Eliminar Actividad",
+       text: "¿Desea eliminar esta Actividad?",
        type: "warning",
        showCancelButton: true,
        confirmButtontext: "Si, eliminar",
@@ -109,9 +109,9 @@ function eliminarPeriodo(id){
            
      var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
 
-     var url= './models/periodos/delet-periodo.php';
+     var url= './models/actividades/delet-actividad.php';
      request.open('POST', url, true);
-     var strData  = "idperiodo="+idperiodo;
+     var strData  = "idactividad="+idactividad;
      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
      request.send(strData);
      request.onreadystatechange = function(){

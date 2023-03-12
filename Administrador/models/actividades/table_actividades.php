@@ -1,7 +1,7 @@
 <?php
     require_once '../../../includes/conexion.php';
 
-    $sql = 'SELECT * FROM periodos WHERE estado !=0';
+    $sql = 'SELECT * FROM actividad WHERE estado !=0';
     $query = $pdo -> prepare($sql);
     $query ->execute();
 
@@ -14,8 +14,8 @@
         }
 
         $consulta[$i]['acciones'] = '
-        <button class="btn btn-primary btn-sm" title="Editar" onclick="editarPeriodo('.$consulta[$i]['periodo_id'].')">Editar</button>
-        <button class="btn btn-danger btn-sm" title="Eliminar" onclick="eliminarPeriodo('.$consulta[$i]['periodo_id'].')">Eliminar</button>
+        <button class="btn btn-primary btn-sm" title="Editar" onclick="editarActividad('.$consulta[$i]['actividad_id'].')">Editar</button>
+        <button class="btn btn-danger btn-sm" title="Eliminar" onclick="eliminarActividad('.$consulta[$i]['actividad_id'].')">Eliminar</button>
         ';
      }
 
