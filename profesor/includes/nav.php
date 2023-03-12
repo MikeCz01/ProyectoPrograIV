@@ -1,3 +1,16 @@
+  <?php
+  require_once '../includes/conexion.php';
+  
+  $idprofesor = $_SESSION['profesor_id'];
+
+  $sql = "SELECT * FROM profesor_materia as pm INNER JOIN grados as g on pm.grados_id = g.grados_id inner join aulas as a on pm.aulas_id = aulas.aulas_id inner join
+profesor as p on pm.profesor_id = p.profesor_id inner join materias as m on pm.materias_id = m.materias_id where pm.estadopm != 0 and pm.profesor_id =
+$idprofesor";
+$query = $pdo->prepare($sql);
+$query->execute();
+$row = $query->rowCount();
+   
+   
    <!-- Sidebar menu-->
    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
@@ -8,14 +21,21 @@
         </div>
       </div>
       <ul class="app-menu">
-      <li><a class="app-menu__item" href="lista_usuarios.php"><i class="app-menu__icon fas fa-users"></i><span class="app-menu__label">Usuarios</span></a></li>
-      <li><a class="app-menu__item" href="lista_profesores.php"><i class="app-menu__icon fas fa-chalkboard-teacher"></i><span class="app-menu__label">Docentes</span></a></li>
-      <li><a class="app-menu__item" href="lista_alumnos.php"><i class="app-menu__icon fas fa-user-graduate"></i><span class="app-menu__label">Alumnos</span></a></li>
-      <li><a class="app-menu__item" href="lista_grados.php"><i class="app-menu__icon fas fa-list-alt"></i><span class="app-menu__label">Grados</span></a></li>
-      <li><a class="app-menu__item" href="lista_aulas.php"><i class="app-menu__icon fas fa-list-alt"></i><span class="app-menu__label">Aulas</span></a></li>
-      <li><a class="app-menu__item" href="lista_materias.php"><i class="app-menu__icon fas fa-list-alt"></i><span class="app-menu__label">Materias</span></a></li>
-      <li><a class="app-menu__item" href="lista_periodos.php"><i class="app-menu__icon fas fa-list-alt"></i><span class="app-menu__label">Periodos</span></a></li>
-      <li><a class="app-menu__item" href="lista_actividades.php"><i class="app-menu__icon fas fa-list-alt"></i><span class="app-menu__label">Actividades</span></a></li>
-        <li><a class="app-menu__item" href="../logout.php"><i class="app-menu__icon fas fa-sign-out"></i><span class="app-menu__label">Log Out</span></a></li>
+        <li class= "treeview">
+          <a class= "app-menu_item" href="#" data-toggle="treeview">
+            <i class="app-menu-icon fa fa-laptop"></i>
+            <span class= "app-menu_label">Mis Cursos</span>
+            <i class="treeview-indicator fa fa-angle-right"></i>
+  </a>
+  <ul class= "treeview-menu">
+  <?php if ($row > 0) {
+    while ($data = $query->fetch()) {
+      ?>
+      <li><a class="treeview-item" href="contenido.php?curso=<?=$data['pm_id']?>"><i class="icon fa fa-circle-o"></i><?= $data['nombre_materia']; ?> - <?=
+      $data['nombre_grado']; ?> - <?= $data['nombre_aula']; ?></a></li>
+      <?php }} ?>
+  </ul>
+  </li>
+             <li><a class="app-menu__item" href="../logout.php"><i class="app-menu__icon fas fa-sign-out"></i><span class="app-menu__label">Log Out</span></a></li>
       </ul>
     </aside>
