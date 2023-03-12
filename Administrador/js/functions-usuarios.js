@@ -71,6 +71,7 @@ function openModalUsuario(){
 }
 
 function editarUsuario(id){
+    
      var idusuario = id;
      document.querySelector('#tituloModalUsuarios').innerHTML = 'Actualizar Usuario';
      document.querySelector('#actionUsuario').innerHTML = 'Actualizar';
