@@ -44,9 +44,6 @@
                 }
             }
             if($request > 0){
-             
-                   
-              
                 if($accion == 1){
                     $respuesta = array('status' => true, 'msg' => 'Usuario creado correctamente');
                 }
