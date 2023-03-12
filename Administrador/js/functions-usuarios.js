@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function(){
         request.onreadystatechange = function(){
             if(request.readyState == 4 && request.status == 200){
                 var data = JSON.parse(request.responseText);
-                if(request.status){
+                if(data.status){
                     $('#modalUsuario').modal('hide'); 
                     formUsuario.reset();
                     swal('Usuario',data.msg,'success');
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function(){
 function openModalUsuario(){
     document.querySelector('#idusuario').value = '';
     document.querySelector('#tituloModalUsuarios').innerHTML = 'Nuevo Usuario';
-    document.querySelector('#action').innerHTML = 'Guardar';
+    document.querySelector('#actionUsuario').innerHTML = 'Guardar';
     document.querySelector('#formUsuario').reset();
     $('#modalUsuario').modal('show');   
 }
@@ -73,7 +73,7 @@ function openModalUsuario(){
 function editarUsuario(id){
      var idusuario = id;
      document.querySelector('#tituloModalUsuarios').innerHTML = 'Actualizar Usuario';
-     document.querySelector('#action').innerHTML = 'Actualizar';
+     document.querySelector('#actionUsuario').innerHTML = 'Actualizar';
 
      var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
 
@@ -124,7 +124,7 @@ function eliminarUsuario(id){
          if(request.readyState == 4 && request.status == 200){
              var data = JSON.parse(request.responseText);
              if(data.status){
-                swal('Eliminar',data.msg,'sucess');
+                swal('Eliminar',data.msg,'success');
                 tableusuarios.ajax.reload();
              }else{
                  swal('Atención',data.msg,'error');
