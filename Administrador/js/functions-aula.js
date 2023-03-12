@@ -118,7 +118,7 @@ function eliminarAula(id){
          if(request.readyState == 4 && request.status == 200){
              var data = JSON.parse(request.responseText);
              if(data.status){
-                swal('Eliminar',data.msg,'sucess');
+                swal('Eliminar',data.msg,'success');
                 tableaulas.ajax.reload();
              }else{
                  swal('Atención',data.msg,'error');
