@@ -16,6 +16,6 @@
       <li><a class="app-menu__item" href="lista_materias.php"><i class="app-menu__icon fas fa-list-alt"></i><span class="app-menu__label">Materias</span></a></li>
       <li><a class="app-menu__item" href="lista_periodos.php"><i class="app-menu__icon fas fa-list-alt"></i><span class="app-menu__label">Periodos</span></a></li>
       <li><a class="app-menu__item" href="lista_actividades.php"><i class="app-menu__icon fas fa-list-alt"></i><span class="app-menu__label">Actividades</span></a></li>
-        <li><a class="app-menu__item" href="../logout.php"><i class="app-menu__icon fas fa-sign-out"></i><span class="app-menu__label">Log Out</span></a></li>
+        <li><a class="app-menu__item" href="../index.php"><i class="app-menu__icon fas fa-sign-out"></i><span class="app-menu__label">Log Out</span></a></li>
       </ul>
     </aside>
