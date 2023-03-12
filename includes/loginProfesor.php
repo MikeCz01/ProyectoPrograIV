@@ -1,26 +1,24 @@
 <?php
 if(!empty($_POST)){
-    if(empty($_POST['login']) || empty($_POST['pass'])) {
+    if(empty($_POST['loginProfesor']) || empty($_POST['passProfesor'])) {
     echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert"></button>Todos los campos son
      necesarios</div>';
 } else {
  require_once 'conexion.php';
- $login = $_POST['login'];
- $pass = $_POST['pass'];
+ $login = $_POST['loginProfesor'];
+ $pass = $_POST['passProfesor'];
 
- $sql = 'SELECT * FROM usuarios as u INNER JOIN rol as r ON u.rol = r.rol_id WHERE u.usuario = ? AND u.estado !=0';
+ $sql = 'SELECT * FROM profesor where cedula = ?';
  $query = $pdo->prepare($sql);
  $query->execute(array($login));
  $result = $query->fetch(PDO::FETCH_ASSOC);
 
  if($query->rowCount() > 0) {
      if(password_verify($pass, $result['clave'])) {
-        if($result['estado'] == 1) {
-            $_SESSION['active'] = true;
-            $_SESSION['id_usuario'] = $result['usuario_id'];
+            $_SESSION['activeP'] = true;
+            $_SESSION['profesor_id'] = $result['profesor_id'];
             $_SESSION['nombre'] = $result['nombre'];
-            $_SESSION['rol'] = $result['rol_id'];
-            $_SESSION['nombre_rol'] = $result['nombre_rol'];
+            $_SESSION['cedula'] = $result['cedula'];
             
          echo '<div class="alert alert-success"><button type="button" class-close" data-dismiss?"alert"></button>Redirecting</div>';
         }else{
@@ -35,7 +33,6 @@ if(!empty($_POST)){
   } else {
      echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert"></button>Usuario o Clave
      incorrectos </div>';
-}
 }
 }
 ?>
