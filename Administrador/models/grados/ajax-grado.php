@@ -15,11 +15,11 @@
         $query = $pdo->prepare($sql);
         $query->execute(array($nombre,$idgrado));
         $result = $query -> fetch(PDO::FETCH_ASSOC);
-
+        $accion=0;
         if($result > 0){
             $respuesta = array('status' => false, 'msg' => 'Grado Existente'); 
          }else{
-             if($idgrado == 0){
+             if($idgrado == ""){
                  $sqlInsert = 'INSERT INTO grados (nombre_grado,estado) VALUES (?,?)';
                  $queryInsert = $pdo -> prepare($sqlInsert);
                  $request = $queryInsert -> execute(array($nombre,$estado));
@@ -34,8 +34,10 @@
              if($request >0){
                 if($accion == 1){
                     $respuesta = array('status' => true, 'msg' => 'Grado creado correctamente');
-                }else{
-                    $respuesta = array('status' => false, 'msg' => 'Grado actualizado correctamente');
+                }
+
+                if($accion == 2){
+                    $respuesta = array('status' => true, 'msg' => 'Grado actualizado correctamente');
                 }
              }
             }

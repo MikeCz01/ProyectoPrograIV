@@ -46,16 +46,11 @@
              }
              if($request >0){
                 if($accion == 1){
-                    $respuesta = array('status' => true, 'msg' => 'Usuario creado correctamente');
+                    $respuesta = array('status' => true, 'msg' => 'Docente creado correctamente');
                 }
 
                 if($accion == 2){
-                    $respuesta = array('status' => true, 'msg' => 'Usuario actualizado correctamente');
-                }
-                
-                if($accion == 0){
-
-                    $respuesta = array('status' => false, 'msg' => 'Ocurrio un problema');
+                    $respuesta = array('status' => true, 'msg' => 'Docente actualizado correctamente');
                 }
              }
             }

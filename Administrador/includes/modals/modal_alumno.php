@@ -22,16 +22,16 @@
           </div>
           <div class="form-group">
             <label for="control-label">Cédula:</label>
-            <input type="password" class="form-control" name="cedula" id="cedula">
+            <input type="text" class="form-control" name="cedula" id="cedula">
           </div>
           
           <div class="form-group">
             <label for="control-label">Teléfono:</label>
-            <input type="password" class="form-control" name="telefono" id="telefono">
+            <input type="number" class="form-control" name="telefono" id="telefono">
           </div>
           <div class="form-group">
             <label for="control-label">Correo:</label>
-            <input type="password" class="form-control" name="correo" id="correo">
+            <input type="text" class="form-control" name="correo" id="correo">
           </div>
           <div class="form-group">
             <label for="control-label">Fecha de Nacimiento:</label>
@@ -51,7 +51,7 @@
           </div> 
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button class="btn btn-primary" id="action" type="submit">Guardar</button>
+            <button class="btn btn-primary" id="actionAlumno" type="submit">Guardar</button>
         </div>
         </form>
       </div>

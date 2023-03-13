@@ -13,7 +13,7 @@
         $telefono = $_POST['telefono'];
         $correo = $_POST['correo'];
         $fecha_nac = $_POST['fecha_nac'];
-        $fecha_nac = $_POST['fecha_reg'];
+        $fecha_reg = $_POST['fecha_reg'];
         $estado = $_POST['listEstado'];
 
        
@@ -22,14 +22,14 @@
         $query = $pdo->prepare($sql);
         $query->execute(array($cedula,$idalumno));
         $result = $query -> fetch(PDO::FETCH_ASSOC);
-
+        $accion = 0;
         if($result > 0){
             $respuesta = array('status' => false, 'msg' => 'Alumno Existente'); 
          }else{
-             if($idalumno == 0){
-                 $sqlInsert = 'INSERT INTO alumno (nombre_alumno,edad,direccion,cedula,clave,telefono,correo,fecha_nac,fecha_registro,estado) VALUES (?,?,?,?,?,?,?,?,?,?)';
+             if($idalumno == ""){
+                 $sqlInsert = 'INSERT INTO alumnos (nombre_alumno,edad,direccion,cedula,telefono,correo,fecha_nac,fecha_registro,estado) VALUES (?,?,?,?,?,?,?,?,?)';
                  $queryInsert = $pdo -> prepare($sqlInsert);
-                 $request = $queryInsert -> execute(array($nombre,$edad,$direccion,$cedula,$clave,$telefono,$correo,$fecha_nac,$fecha_reg, $estado));
+                 $request = $queryInsert -> execute(array($nombre,$edad,$direccion,$cedula,$telefono,$correo,$fecha_nac,$fecha_reg, $estado));
                  $accion = 1;
              }else{
                      $sqlUpdate = 'UPDATE alumnos SET nombre_alumno = ?, edad = ?, direccion = ?, cedula = ?, telefono = ?, correo = ?, fecha_nac = ?, fecha_registro, estado =? WHERE alumno_id =?';
@@ -41,9 +41,12 @@
              if($request >0){
                 if($accion == 1){
                     $respuesta = array('status' => true, 'msg' => 'Alumno creado correctamente');
-                }else{
-                    $respuesta = array('status' => false, 'msg' => 'Alumno actualizado correctamente');
                 }
+
+                if($accion == 2){
+                    $respuesta = array('status' => true, 'msg' => 'Alumno actualizado correctamente');
+                }
+                
              }
             }
     }

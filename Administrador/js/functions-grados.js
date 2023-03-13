@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
         var idgrado = document.querySelector('#idgrado').value;
         var nombre = document.querySelector('#nombre').value;
-        var estado = document.querySelector('#estado').value;
+        var estado = document.querySelector('#listEstado').value;
         
         if(nombre == ''){
             swal('Atención','Todos los campos son obligatorios','error');
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function(){
         request.onreadystatechange = function(){
             if(request.readyState == 4 && request.status == 200) {
                 var data = JSON.parse(request.responseText);
-                if(request.status){
+                if(data.status){
                     $('#modalGrado').modal('hide'); 
                     formGrado.reset();
                     swal('Grado',data.msg,'success');
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function(){
 function openModalGrados(){
     document.querySelector('#idgrado').value = '';
     document.querySelector('#tituloModalGrado').innerHTML = 'Nuevo Grado';
-    document.querySelector('#action').innerHTML = 'Guardar';
+    document.querySelector('#actionGrado').innerHTML = 'Guardar';
     document.querySelector('#formGrado').reset();
   $('#modalGrado').modal('show');   
 }
@@ -68,7 +68,7 @@ function openModalGrados(){
 function editarGrado(id){
      var idgrado = id;
      document.querySelector('#tituloModalGrado').innerHTML = 'Actualizar Grado';
-     document.querySelector('#action').innerHTML = 'Actualizar';
+     document.querySelector('#actionGrado').innerHTML = 'Actualizar';
 
      var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
 
@@ -82,7 +82,7 @@ function editarGrado(id){
 
                     document.querySelector('#idgrado').value = data.data.grado_id;
                     document.querySelector('#nombre').value = data.data.nombre_grado;
-                    document.querySelector('#estado').value = data.data.estado;
+                    document.querySelector('#listEstado').value = data.data.estado;
 
                     $('#modalGrado').modal('show'); 
                 }else{

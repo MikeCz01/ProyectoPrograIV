@@ -51,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function(){
         request.open('POST',url,true);
         request.send(form);
         request.onreadystatechange = function(){
-            debugger;
             if(request.readyState == 4 && request.status == 200) {
                 var data = JSON.parse(request.responseText);
                 if(data.status){
@@ -87,7 +86,7 @@ function editarProfesor(id){
         request.open('GET', url, true);
         request.send();
         request.onreadystatechange = function(){
-            debugger;
+            
             if(request.readyState == 4 && request.status == 200){
                 var data = JSON.parse(request.responseText);
                 if(data.status){

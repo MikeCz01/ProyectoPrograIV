@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function(){
         var correo = document.querySelector('#correo').value;
         var fecha_nac= document.querySelector('#fecha_nac').value;
         var fecha_reg = document.querySelector('#fecha_reg').value;
-        var estado = document.querySelector('#estado').value;
+        var estado = document.querySelector('#listEstado').value;
         
         if(nombre == '' || direccion == '' || cedula == '' || telefono == '' || correo == '' || fecha_nac== '' || fecha_reg== ''){
             swal('Atención','Todos los campos son obligatorios','error');
@@ -57,13 +57,13 @@ document.addEventListener('DOMContentLoaded', function(){
         request.onreadystatechange = function(){
             if(request.readyState == 4 && request.status == 200) {
                 var data = JSON.parse(request.responseText);
-                if(request.status){
+                if(data.status){
                     $('#modalAlumno').modal('hide'); 
                     formAlumno.reset();
                     swal('Alumno',data.msg,'success');
                     tablealumnos.ajax.reload();
                 }else{
-                    swal('Usuario',data.msg,'error');
+                    swal('Alumno',data.msg,'error');
                 }
             }
         }
@@ -72,9 +72,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 function openModalAlumnos(){
-    document.querySelector('#idalumno').value = '';
+    document.querySelector('#idalumno').value = "";
     document.querySelector('#tituloModalAlumnos').innerHTML = 'Nuevo Alumno';
-    document.querySelector('#action').innerHTML = 'Guardar';
+    document.querySelector('#actionAlumno').innerHTML = 'Guardar';
     document.querySelector('#formAlumno').reset();
   $('#modalAlumno').modal('show');   
 }
@@ -82,7 +82,7 @@ function openModalAlumnos(){
 function editarAlumno(id){
      var idalumno = id;
      document.querySelector('#tituloModalAlumnos').innerHTML = 'Actualizar Alumno';
-     document.querySelector('#action').innerHTML = 'Actualizar';
+     document.querySelector('#actionAlumno').innerHTML = 'Actualizar';
 
      var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
 
@@ -90,6 +90,7 @@ function editarAlumno(id){
         request.open('GET', url, true);
         request.send();
         request.onreadystatechange = function(){
+            
             if(request.readyState == 4 && request.status == 200){
                 var data = JSON.parse(request.responseText);
                 if(data.status){
@@ -103,7 +104,7 @@ function editarAlumno(id){
                     document.querySelector('#correo').value = data.data.correo;
                     document.querySelector('#fecha_nac').value = data.data.fecha_nac;
                     document.querySelector('#fecha_reg').value = data.data.fecha_registro;
-                    document.querySelector('#estado').value = data.data.estado;
+                    document.querySelector('#listEstado').value = data.data.estado;
 
                     $('#modalAlumno').modal('show'); 
                 }else{
