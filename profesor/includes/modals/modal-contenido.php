@@ -15,7 +15,7 @@
           </div>
           <div class="form-group">
             <label for="control-label">Descripcion Del Contenido</label>
-                <textarea name= "descripcion" id="descripcion" rows="4"></textarea>
+                <textarea name= "descripcion" class= "form-control" id="descripcion" rows="4"></textarea>
           </div>
           <div class="form-group">
             <label for="control-label">Adjuntar Material</label>
