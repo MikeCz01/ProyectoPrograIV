@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="tituloModalMateria">Nuevo Materia</h5>
-        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">X</button>
       </div>
       <div class="modal-body">
         <form id="formMateria" name="formMateria">
