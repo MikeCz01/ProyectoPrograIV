@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function(){
     var formProfesor = document.querySelector('#formProfesor');
     formProfesor.onsubmit = function(e){
         e.preventDefault();
-
         var idprofesor = document.querySelector('#idprofesor').value;
         var nombre = document.querySelector('#nombre').value;
         var direccion = document.querySelector('#direccion').value;
@@ -39,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function(){
         var telefono = document.querySelector('#telefono').value;
         var correo = document.querySelector('#correo').value;
         var nivel_est = document.querySelector('#nivel_est').value;
-        var estado = document.querySelector('#estado').value;
+        var estado = document.querySelector('#listEstado').value;
 
         if(nombre == '' || direccion == '' || cedula == '' || telefono == '' || correo == '' || nivel_est == ''){
             swal('Atención','Todos los campos son obligatorios','error');
@@ -52,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function(){
         request.open('POST',url,true);
         request.send(form);
         request.onreadystatechange = function(){
+            debugger;
             if(request.readyState == 4 && request.status == 200) {
                 var data = JSON.parse(request.responseText);
                 if(data.status){
@@ -87,6 +87,7 @@ function editarProfesor(id){
         request.open('GET', url, true);
         request.send();
         request.onreadystatechange = function(){
+            debugger;
             if(request.readyState == 4 && request.status == 200){
                 var data = JSON.parse(request.responseText);
                 if(data.status){
@@ -98,7 +99,7 @@ function editarProfesor(id){
                     document.querySelector('#telefono').value = data.data.telefono;
                     document.querySelector('#correo').value = data.data.correo;
                     document.querySelector('#nivel_est').value = data.data.nivel_est;
-                    document.querySelector('#estado').value = data.data.estado;
+                    document.querySelector('#listEstado').value = data.data.estado;
 
                     $('#modalProfesor').modal('show'); 
                 }else{

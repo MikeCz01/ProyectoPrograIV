@@ -15,7 +15,7 @@
 
         $consulta[$i]['acciones']= '
         <button class="btn btn-primary btn-sm" title="Editar" onclick="editarProfesor('.$consulta[$i]['profesor_id'].')">Editar</button>
-        <button class="btn btn-danger btm-sm" title="Eliminar" onclick="eliminarProfesor('.$consulta[$i]['profesor_id'].')">Eliminar</button>
+        <button class="btn btn-danger btn-sm" title="Eliminar" onclick="eliminarProfesor('.$consulta[$i]['profesor_id'].')">Eliminar</button>
         ';
      }
 

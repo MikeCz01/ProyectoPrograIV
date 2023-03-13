@@ -21,7 +21,7 @@
         $query = $pdo->prepare($sql);
         $query->execute(array($cedula,$idprofesor));
         $result = $query -> fetch(PDO::FETCH_ASSOC);
-
+        $accion = 0;
         if($result > 0){
             $respuesta = array('status' => false, 'msg' => 'Docente Existente'); 
          }else{
@@ -41,14 +41,21 @@
                     $sqlUpdate = 'UPDATE profesor SET nombre = ?, direccion = ?, cedula = ?, clave = ?, telefono = ?, correo = ?, nivel_est = ?, estado =? WHERE profesor_id =?';
                     $queryUpdate = $pdo -> prepare($sqlUpdate);
                     $request = $queryUpdate -> execute(array($nombre, $direccion, $cedula,$clave, $telefono,$correo, $nivel_est, $estado, $idprofesor));
-                    $accion = 3;
+                    $accion = 2;
                  }
              }
              if($request >0){
                 if($accion == 1){
-                    $respuesta = array('status' => true, 'msg' => 'Docente creado correctamente');
-                }else{
-                    $respuesta = array('status' => false, 'msg' => 'Docente actualizado correctamente');
+                    $respuesta = array('status' => true, 'msg' => 'Usuario creado correctamente');
+                }
+
+                if($accion == 2){
+                    $respuesta = array('status' => true, 'msg' => 'Usuario actualizado correctamente');
+                }
+                
+                if($accion == 0){
+
+                    $respuesta = array('status' => false, 'msg' => 'Ocurrio un problema');
                 }
              }
             }
