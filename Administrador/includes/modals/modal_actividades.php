@@ -22,7 +22,7 @@
           </div> 
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button class="btn btn-primary" id="action" type="submit">Guardar</button>
+            <button class="btn btn-primary" id="actionActividad" type="submit">Guardar</button>
         </div>
         </form>
       </div>

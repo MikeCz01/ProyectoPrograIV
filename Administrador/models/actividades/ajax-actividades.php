@@ -19,7 +19,7 @@
         if($result > 0){
             $respuesta = array('status' => false, 'msg' => 'Actividad Existente'); 
          }else{
-             if($idactividad == 0){
+             if($idactividad == ""){
                  $sqlInsert = 'INSERT INTO actividad (nombre_actividad,estado) VALUES (?,?)';
                  $queryInsert = $pdo -> prepare($sqlInsert);
                  $request = $queryInsert -> execute(array($nombre,$estado));
@@ -34,8 +34,10 @@
              if($request >0){
                 if($accion == 1){
                     $respuesta = array('status' => true, 'msg' => 'Actividad creada correctamente');
-                }else{
-                    $respuesta = array('status' => false, 'msg' => 'Actividad actualizada correctamente');
+                }
+
+                if($accion == 2){
+                    $respuesta = array('status' => true, 'msg' => 'Actividad actualizada correctamente');
                 }
              }
             }

@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
         var idperiodo = document.querySelector('#idperiodo').value;
         var nombre = document.querySelector('#nombre').value;
-        var estado = document.querySelector('#estado').value;
+        var estado = document.querySelector('#listEstado').value;
         
         if(nombre == ''){
             swal('Atención','Todos los campos son obligatorios','error');
@@ -43,9 +43,9 @@ document.addEventListener('DOMContentLoaded', function(){
         request.onreadystatechange = function(){
             if(request.readyState == 4 && request.status == 200) {
                 var data = JSON.parse(request.responseText);
-                if(request.status){
+                if(data.status){
                     $('#modalPeriodo').modal('hide'); 
-                    formMateria.reset();
+                    formPeriodo.reset();
                     swal('Periodo',data.msg,'success');
                     tableperiodos.ajax.reload();
                 }else{
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function(){
 function openModalPeriodos(){
     document.querySelector('#idperiodo').value = '';
     document.querySelector('#tituloModalPeriodo').innerHTML = 'Nuevo Periodo';
-    document.querySelector('#action').innerHTML = 'Guardar';
+    document.querySelector('#actionPeriodo').innerHTML = 'Guardar';
     document.querySelector('#formPeriodo').reset();
   $('#modalPeriodo').modal('show');   
 }
@@ -68,7 +68,7 @@ function openModalPeriodos(){
 function editarPeriodo(id){
      var idperiodo = id;
      document.querySelector('#tituloModalPeriodo').innerHTML = 'Actualizar Periodo';
-     document.querySelector('#action').innerHTML = 'Actualizar';
+     document.querySelector('#actionPeriodo').innerHTML = 'Actualizar';
 
      var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
 
@@ -82,7 +82,7 @@ function editarPeriodo(id){
 
                     document.querySelector('#idperiodo').value = data.data.period_id;
                     document.querySelector('#nombre').value = data.data.nombre_periodo;
-                    document.querySelector('#estado').value = data.data.estado;
+                    document.querySelector('#listEstado').value = data.data.estado;
 
                     $('#modalPeriodo').modal('show'); 
                 }else{

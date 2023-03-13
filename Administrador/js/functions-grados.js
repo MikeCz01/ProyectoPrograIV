@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function(){
         }
 
         var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
-        var url= './models/grados/ajax-grados.php';
+        var url= './models/grados/ajax-grado.php';
         var form = new FormData(formGrado);
         request.open('POST',url,true);
         request.send(form);

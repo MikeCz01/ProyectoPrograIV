@@ -19,7 +19,7 @@
         if($result > 0){
             $respuesta = array('status' => false, 'msg' => 'Periodo Existente'); 
          }else{
-             if($idmateria == 0){
+             if($idperiodo == ""){
                  $sqlInsert = 'INSERT INTO periodos (nombre_periodo,estado) VALUES (?,?)';
                  $queryInsert = $pdo -> prepare($sqlInsert);
                  $request = $queryInsert -> execute(array($nombre,$estado));
@@ -34,8 +34,10 @@
              if($request >0){
                 if($accion == 1){
                     $respuesta = array('status' => true, 'msg' => 'Periodo creado correctamente');
-                }else{
-                    $respuesta = array('status' => false, 'msg' => 'Periodo actualizado correctamente');
+                }
+
+                if($accion == 2){
+                    $respuesta = array('status' => true, 'msg' => 'Periodo actualizado correctamente');
                 }
              }
             }

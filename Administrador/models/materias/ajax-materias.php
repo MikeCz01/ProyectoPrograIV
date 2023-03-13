@@ -19,7 +19,7 @@
         if($result > 0){
             $respuesta = array('status' => false, 'msg' => 'Materia Existente'); 
          }else{
-             if($idmateria == 0){
+             if($idmateria == ""){
                  $sqlInsert = 'INSERT INTO materias (nombre_materia,estado) VALUES (?,?)';
                  $queryInsert = $pdo -> prepare($sqlInsert);
                  $request = $queryInsert -> execute(array($nombre,$estado));
@@ -34,8 +34,10 @@
              if($request >0){
                 if($accion == 1){
                     $respuesta = array('status' => true, 'msg' => 'Materia creada correctamente');
-                }else{
-                    $respuesta = array('status' => false, 'msg' => 'Materia actualizada correctamente');
+                }
+
+                if($accion == 2){
+                    $respuesta = array('status' => true, 'msg' => 'Materia actualizada correctamente');
                 }
              }
             }

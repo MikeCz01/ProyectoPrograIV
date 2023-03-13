@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
         var idmateria = document.querySelector('#idmateria').value;
         var nombre = document.querySelector('#nombre').value;
-        var estado = document.querySelector('#estado').value;
+        var estado = document.querySelector('#listEstado').value;
         
         if(nombre == ''){
             swal('Atención','Todos los campos son obligatorios','error');
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function(){
 function openModalMaterias(){
     document.querySelector('#idmateria').value = '';
     document.querySelector('#tituloModalMateria').innerHTML = 'Nueva Materia';
-    document.querySelector('#action').innerHTML = 'Guardar';
+    document.querySelector('#actionMateria').innerHTML = 'Guardar';
     document.querySelector('#formMateria').reset();
   $('#modalMateria').modal('show');   
 }
@@ -68,7 +68,7 @@ function openModalMaterias(){
 function editarMateria(id){
      var idmateria = id;
      document.querySelector('#tituloModalMateria').innerHTML = 'Actualizar Materia';
-     document.querySelector('#action').innerHTML = 'Actualizar';
+     document.querySelector('#actionMateria').innerHTML = 'Actualizar';
 
      var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
 
@@ -82,7 +82,7 @@ function editarMateria(id){
 
                     document.querySelector('#idmateria').value = data.data.materia_id;
                     document.querySelector('#nombre').value = data.data.nombre_materia;
-                    document.querySelector('#estado').value = data.data.estado;
+                    document.querySelector('#listEstado').value = data.data.estado;
 
                     $('#modalMateria').modal('show'); 
                 }else{

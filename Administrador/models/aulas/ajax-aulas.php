@@ -15,11 +15,11 @@
         $query = $pdo->prepare($sql);
         $query->execute(array($nombre,$idaula));
         $result = $query -> fetch(PDO::FETCH_ASSOC);
-
+        $accion = 0;
         if($result > 0){
             $respuesta = array('status' => false, 'msg' => 'Aula Existente'); 
          }else{
-             if($idaula == 0){
+             if($idaula == ""){
                  $sqlInsert = 'INSERT INTO aulas (nombre_aula,estado) VALUES (?,?)';
                  $queryInsert = $pdo -> prepare($sqlInsert);
                  $request = $queryInsert -> execute(array($nombre,$estado));
@@ -34,8 +34,10 @@
              if($request >0){
                 if($accion == 1){
                     $respuesta = array('status' => true, 'msg' => 'Aula creada correctamente');
-                }else{
-                    $respuesta = array('status' => false, 'msg' => 'Aula actualizada correctamente');
+                }
+
+                if($accion == 2){
+                    $respuesta = array('status' => true, 'msg' => 'Aula actualizada correctamente');
                 }
              }
             }

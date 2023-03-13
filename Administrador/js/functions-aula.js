@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
         var idaula = document.querySelector('#idaula').value;
         var nombre = document.querySelector('#nombre').value;
-        var estado = document.querySelector('#estado').value;
+        var estado = document.querySelector('#listEstado').value;
         
         if(nombre == ''){
             swal('Atención','Todos los campos son obligatorios','error');
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function(){
         request.onreadystatechange = function(){
             if(request.readyState == 4 && request.status == 200) {
                 var data = JSON.parse(request.responseText);
-                if(request.status){
+                if(data.status){
                     $('#modalAula').modal('hide'); 
                     formAula.reset();
                     swal('Aula',data.msg,'success');
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function(){
 function openModalAula(){
     document.querySelector('#idaula').value = "";
     document.querySelector('#tituloModalAulas').innerHTML = 'Nueva Aula';
-    document.querySelector('#action').innerHTML = 'Guardar';
+    document.querySelector('#actionAula').innerHTML = 'Guardar';
     document.querySelector('#formAula').reset();
     $('#modalAula').modal('show');   
 }
@@ -68,11 +68,11 @@ function openModalAula(){
 function editarAula(id){
      var idaula = id;
      document.querySelector('#tituloModalAulas').innerHTML = 'Actualizar Aula';
-     document.querySelector('#action').innerHTML = 'Actualizar';
+     document.querySelector('#actionAula').innerHTML = 'Actualizar';
 
      var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
 
-        var url= './models/aulas/edit-aula.php?idaula='+idaula;
+        var url= './models/aulas/edit-aulas.php?idaula='+idaula;
         request.open('GET', url, true);
         request.send();
         request.onreadystatechange = function(){
@@ -82,7 +82,7 @@ function editarAula(id){
 
                     document.querySelector('#idaula').value = data.data.aula_id;
                     document.querySelector('#nombre').value = data.data.nombre_aula;
-                    document.querySelector('#estado').value = data.data.estado;
+                    document.querySelector('#listEstado').value = data.data.estado;
 
                     $('#modalAula').modal('show'); 
                 }else{
@@ -109,7 +109,7 @@ function eliminarAula(id){
            
      var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
 
-     var url= './models/aulas/delet-aula.php';
+     var url= './models/aulas/delet-aulas.php';
      request.open('POST', url, true);
      var strData  = "idaula="+idaula;
      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
         var idactividad = document.querySelector('#idactividad').value;
         var nombre = document.querySelector('#nombre').value;
-        var estado = document.querySelector('#estado').value;
+        var estado = document.querySelector('#listEstado').value;
         
         if(nombre == ''){
             swal('Atención','Todos los campos son obligatorios','error');
@@ -43,11 +43,11 @@ document.addEventListener('DOMContentLoaded', function(){
         request.onreadystatechange = function(){
             if(request.readyState == 4 && request.status == 200) {
                 var data = JSON.parse(request.responseText);
-                if(request.status){
+                if(data.status){
                     $('#modalActividad').modal('hide'); 
-                    formMateria.reset();
+                    formActividad.reset();
                     swal('Actividad',data.msg,'success');
-                    tableperiodos.ajax.reload();
+                    tableactividades.ajax.reload();
                 }else{
                     swal('Atención',data.msg,'error');
                 }
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function(){
 function openModalActividades(){
     document.querySelector('#idactividad').value = '';
     document.querySelector('#tituloModalActividad').innerHTML = 'Nueva Actividad';
-    document.querySelector('#action').innerHTML = 'Guardar';
+    document.querySelector('#actionActividad').innerHTML = 'Guardar';
     document.querySelector('#formActividad').reset();
     $('#modalActividad').modal('show');   
 }
@@ -68,7 +68,7 @@ function openModalActividades(){
 function editarActividad(id){
      var idactividad = id;
      document.querySelector('#tituloModalActividad').innerHTML = 'Actualizar Actividad';
-     document.querySelector('#action').innerHTML = 'Actualizar';
+     document.querySelector('#actionActividad').innerHTML = 'Actualizar';
 
      var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
 
@@ -82,7 +82,7 @@ function editarActividad(id){
 
                     document.querySelector('#idactividad').value = data.data.actividad_id;
                     document.querySelector('#nombre').value = data.data.nombre_actividad;
-                    document.querySelector('#estado').value = data.data.estado;
+                    document.querySelector('#listEstado').value = data.data.estado;
 
                     $('#modalActividad').modal('show'); 
                 }else{
@@ -119,7 +119,7 @@ function eliminarActividad(id){
              var data = JSON.parse(request.responseText);
              if(data.status){
                 swal('Eliminar',data.msg,'success');
-                tableperiodos.ajax.reload();
+                tableactividades.ajax.reload();
              }else{
                  swal('Atención',data.msg,'error');
              }
