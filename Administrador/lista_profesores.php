@@ -5,7 +5,7 @@
  <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i> Lista de Docentes</h1>
+          <h1><i class="fas fa-chalkboard-teacher"></i> Lista de Docentes</h1>
           <button class= "btn btn-success" type="button" onclick="openModalDocentes()">Nuevo Docente</button>
           <br>
         </div>

@@ -5,7 +5,7 @@
  <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i> Lista de Materias</h1>
+          <h1><i class="fas fa-list-alt"></i> Lista de Materias</h1>
           <button class= "btn btn-success" type="button" onclick="openModalMaterias()">Nueva Materia</button>
           <br>
         </div>

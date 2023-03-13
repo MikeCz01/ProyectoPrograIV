@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function(){
         request.onreadystatechange = function(){
             if(request.readyState == 4 && request.status == 200) {
                 var data = JSON.parse(request.responseText);
-                if(request.status){
+                if(data.status){
                     $('#modalProfesor').modal('hide'); 
                     formProfesor.reset();
                     swal('Profesor',data.msg,'success');
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function(){
 function openModalDocentes(){
     document.querySelector('#idprofesor').value = "";
     document.querySelector('#tituloModalDocente').innerHTML = 'Nuevo Docente';
-    document.querySelector('#action').innerHTML = 'Guardar';
+    document.querySelector('#actionProfesor').innerHTML = 'Guardar';
     document.querySelector('#formProfesor').reset();
   $('#modalProfesor').modal('show');   
 }
@@ -79,7 +79,7 @@ function openModalDocentes(){
 function editarProfesor(id){
      var idprofesor = id;
      document.querySelector('#tituloModalDocente').innerHTML = 'Actualizar Docente';
-     document.querySelector('#action').innerHTML = 'Actualizar';
+     document.querySelector('#actionProfesor').innerHTML = 'Actualizar';
 
      var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
 

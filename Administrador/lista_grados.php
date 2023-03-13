@@ -5,12 +5,12 @@
  <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i> Lista de Grados</h1>
+          <h1><i class="fas fa-list-alt"></i> Lista de Grados</h1>
           <button class= "btn btn-success" type="button" onclick="openModalGrados()">Nuevo Grado</button>
           <br>
         </div>
         <ul class="app-breadcrumb breadcrumb">
-          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item"><i class="fas fa-list-alt"></i></li>
           <li class="breadcrumb-item"><a href="#">Lista de Grados</a></li>
         </ul>
       </div>
