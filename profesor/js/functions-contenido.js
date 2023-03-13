@@ -85,3 +85,38 @@ function editarContenido() {
     }
   };
 }
+
+
+function eliminarProfesor(id){
+  var idprofesor = id;
+
+  swal({
+     title: "Eliminar Contenido",
+     type: "warning",
+     showCancelButton: true,
+     confirmButtontext: "Si, eliminar",
+     cancelbuttontext: "No, cancelar",
+     closeOnConfirm: false,
+     closeOnCancel: true 
+  },function(confirm){
+      if(confirm){
+         
+   var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
+   var url= './models/contenido/delet-contenido.php';
+   request.open('POST', url, true);
+   var strData  = "idprofesor="+idprofesor;
+   request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+   request.send(strData);
+   request.onreadystatechange = function(){
+       if(request.readyState == 4 && request.status == 200){
+           var data = JSON.parse(request.responseText);
+           if(data.status){
+            location.reload();
+           }else{
+               swal('Atención',data.msg,'error');
+           }
+       }
+   } 
+      }
+  })
+}
