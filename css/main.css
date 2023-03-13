@@ -162,7 +162,7 @@ sup {
 }
 
 a {
-  color: #009688;
+  color: gold;
   text-decoration: none;
   background-color: transparent;
 }
@@ -5246,8 +5246,8 @@ input[type="button"].btn-block {
 .page-item.active .page-link {
   z-index: 1;
   color: #FFF;
-  background-color: #009688;
-  border-color: #009688;
+  background-color: #0e1f53;
+  border-color: #0e1f53;
 }
 
 .page-item.disabled .page-link {
