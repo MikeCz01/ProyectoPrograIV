@@ -18,7 +18,7 @@
           </div>
           <div class="form-group">
             <label for="control-label">Cédula:</label>
-            <input type="password" class="form-control" name="cedula" id="cedula">
+            <input type="text" class="form-control" name="cedula" id="cedula">
           </div>
           <div class="form-group">
             <label for="control-label">Contraseña:</label>
@@ -26,15 +26,15 @@
           </div>
           <div class="form-group">
             <label for="control-label">Teléfono:</label>
-            <input type="password" class="form-control" name="telefono" id="telefono">
+            <input type="text" class="form-control" name="telefono" id="telefono">
           </div>
           <div class="form-group">
             <label for="control-label">Correo:</label>
-            <input type="password" class="form-control" name="correo" id="correo">
+            <input type="text" class="form-control" name="correo" id="correo">
           </div>
           <div class="form-group">
             <label for="control-label">Nivel de Estudio:</label>
-            <input type="password" class="form-control" name="nivel_est" id="nivel_est">
+            <input type="text" class="form-control" name="nivel_est" id="nivel_est">
           </div> 
           <div class="form-group">
             <label for="listEstado">Estado</label>
