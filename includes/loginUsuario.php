@@ -1,4 +1,5 @@
 <?php
+session_start();
 if(!empty($_POST)){
     if(empty($_POST['login']) || empty($_POST['pass'])) {
     echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert"></button>Todos los campos son

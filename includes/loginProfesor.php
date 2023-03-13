@@ -1,12 +1,13 @@
 <?php
+session_start();
 if(!empty($_POST)){
-    if(empty($_POST['loginProfesor']) || empty($_POST['passProfesor'])) {
+    if(empty($_POST['login']) || empty($_POST['pass'])) {
     echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert"></button>Todos los campos son
      necesarios</div>';
 } else {
  require_once 'conexion.php';
- $login = $_POST['loginProfesor'];
- $pass = $_POST['passProfesor'];
+ $login = $_POST['login'];
+ $pass = $_POST['pass'];
 
  $sql = 'SELECT * FROM profesor WHERE cedula = ?';
  $query = $pdo->prepare($sql);
