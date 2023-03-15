@@ -1,4 +1,4 @@
-$('#tablematerias').DataTable();
+$('#tableperiodos').DataTable();
 var tableperiodos;
 document.addEventListener('DOMContentLoaded', function(){
     tableperiodos = $('#tableperiodos').DataTable({

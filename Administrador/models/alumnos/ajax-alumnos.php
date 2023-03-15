@@ -27,12 +27,12 @@
             $respuesta = array('status' => false, 'msg' => 'Alumno Existente'); 
          }else{
              if($idalumno == ""){
-                 $sqlInsert = 'INSERT INTO alumnos (nombre_alumno,edad,direccion,cedula,telefono,correo,fecha_nac,fecha_registro,estado) VALUES (?,?,?,?,?,?,?,?,?)';
+                 $sqlInsert = 'INSERT INTO alumnos (nombre_alumno,edad,direccion,cedula,telefono,correo,fecha_nac,fecha_reg,estado) VALUES (?,?,?,?,?,?,?,?,?)';
                  $queryInsert = $pdo -> prepare($sqlInsert);
                  $request = $queryInsert -> execute(array($nombre,$edad,$direccion,$cedula,$telefono,$correo,$fecha_nac,$fecha_reg, $estado));
                  $accion = 1;
              }else{
-                     $sqlUpdate = 'UPDATE alumnos SET nombre_alumno = ?, edad = ?, direccion = ?, cedula = ?, telefono = ?, correo = ?, fecha_nac = ?, fecha_registro, estado =? WHERE alumno_id =?';
+                     $sqlUpdate = 'UPDATE alumnos SET nombre_alumno = ?, edad = ?, direccion = ?, cedula = ?, telefono = ?, correo = ?, fecha_nac = ?, fecha_reg = ?, estado =? WHERE alumno_id =?';
                      $queryUpdate = $pdo -> prepare($sqlUpdate);
                      $request = $queryUpdate -> execute(array($nombre,$edad,$direccion,$cedula,$telefono,$correo,$fecha_nac,$fecha_reg, $estado,$idalumno));
                      $accion = 2;

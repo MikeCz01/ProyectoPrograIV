@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function(){
             {"data":"telefono"},
             {"data":"correo"},
             {"data":"fecha_nac"},
-            {"data":"fecha_registro"},
+            {"data":"fecha_reg"},
             {"data":"estado"}
         ],
         "responsive": true,
@@ -80,6 +80,7 @@ function openModalAlumnos(){
 }
 
 function editarAlumno(id){
+    
      var idalumno = id;
      document.querySelector('#tituloModalAlumnos').innerHTML = 'Actualizar Alumno';
      document.querySelector('#actionAlumno').innerHTML = 'Actualizar';
@@ -103,7 +104,7 @@ function editarAlumno(id){
                     document.querySelector('#telefono').value = data.data.telefono;
                     document.querySelector('#correo').value = data.data.correo;
                     document.querySelector('#fecha_nac').value = data.data.fecha_nac;
-                    document.querySelector('#fecha_reg').value = data.data.fecha_registro;
+                    document.querySelector('#fecha_reg').value = data.data.fecha_reg;
                     document.querySelector('#listEstado').value = data.data.estado;
 
                     $('#modalAlumno').modal('show'); 
