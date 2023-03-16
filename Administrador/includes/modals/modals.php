@@ -25,7 +25,7 @@
                         <select class="form-control" name="listRol" id="listRol">
                             <option value="1">Administrador</option>
                             <option value="2">Docente</option>
-                            <option value="3">Padre</option>
+                            <option value="3">Alumno</option>
                         </select>
                     </div>
                     <div class="form-group">
