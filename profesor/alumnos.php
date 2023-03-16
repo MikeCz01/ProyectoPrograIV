@@ -10,7 +10,7 @@ require_once '../includes/conexion.php';
 
  $idProfesor = $_SESSION['profesor_id'];
 
-$sql = "select * from alumno_profesor as ap inner join profesor_materia as pm on ap.pm_id = pm.pm_id inner join alumnos as a on ap.alumno = a.alumno_id where pm.pm_id = $curso";
+$sql = "SELECT * from alumno_profesor as ap inner join profesor_materia as pm on ap.pm_id = pm.pm_id inner join alumnos as a on ap.alumno = a.alumno_id where pm.pm_id = $curso";
 $query = $pdo->prepare($sql);
 $query->execute();
 $row = $query->rowCount();
@@ -44,7 +44,7 @@ $row = $query->rowCount();
                   <?php if($row > 0 ){
             while($data = $query->fetch()){
                 $codAlumno= $data['alumno_id'];
-                $sql_acceso = "select u_acceso from alumnos where alumno_id = $codAlumno";
+                $sql_acceso = "SELECT u_acceso from alumnos where alumno_id = $codAlumno";
                 $query_acceso = $pdo->prepare($sql_acceso);
                 $query_acceso->execute();
                 $res_acceso = $query_acceso->fetch();
