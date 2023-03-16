@@ -14,6 +14,8 @@
     <!-- Data table plugin-->
     <script type="text/javascript" src="../js/plugins/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
+	<script src='../js/plugins/index.global.js'></script>
+	<script src='../js/locales/es.global.js'></script>
     <script src="js/functions-usuarios.js"></script>
     <script src="js/functions-profesores.js"></script>
     <script src="js/functions-alumnos.js"></script>
@@ -22,45 +24,62 @@
     <script src="js/functions-materia.js"></script>
     <script src="js/functions-periodos.js"></script>
     <script src="js/functions-actividades.js"></script>
-	<script type="text/javascript">
-      $(document).ready(function() {
-      
-      	$('#external-events .fc-event').each(function() {
-      
-      		// store data so the calendar knows to render an event upon drop
-      		$(this).data('event', {
-      			title: $.trim($(this).text()), // use the element's text as the event title
-      			stick: true // maintain when user navigates (see docs on the renderEvent method)
-      		});
-      
-      		// make the event draggable using jQuery UI
-      		$(this).draggable({
-      			zIndex: 999,
-      			revert: true,      // will cause the event to go back to its
-      			revertDuration: 0  //  original position after the drag
-      		});
-      
-      	});
-      
-      	$('#calendar').fullCalendar({
-      		header: {
-      			left: 'prev,next today',
-      			center: 'title',
-      			right: 'month,agendaWeek,agendaDay'
-      		},
-      		editable: true,
-      		droppable: true, // this allows things to be dropped onto the calendar
-      		drop: function() {
-      			// is the "remove after drop" checkbox checked?
-      			if ($('#drop-remove').is(':checked')) {
-      				// if so, remove the element from the "Draggable Events" list
-      				$(this).remove();
-      			}
-      		}
-      	});
-      
-      
-      });
-    </script>
-  </body>
-</html>
+	<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay'
+    },
+    initialDate: '2023-01-12',
+    locale: 'es', // establece el idioma español
+    navLinks: true, // can click day/week names to navigate views
+    selectable: true,
+    selectMirror: true,
+    select: function(arg) {
+      var title = prompt('Event Title:');
+      if (title) {
+        calendar.addEvent({
+          title: title,
+          start: arg.start,
+          end: arg.end,
+          allDay: arg.allDay
+        })
+      }
+      calendar.unselect()
+    },
+    eventClick: function(arg) {
+      if (confirm('Are you sure you want to delete this event?')) {
+        arg.event.remove()
+      }
+    },
+    editable: true,
+    dayMaxEvents: true, // allow "more" link when too many events
+    events: [
+    ]
+  });
+
+  calendar.render();
+});
+</script>
+<style>
+
+  body {
+    margin: 40px 40px;
+    padding: 0;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 14px;
+  }
+
+  #calendar {
+	max-height: 700px;
+    max-width: 900px;
+    margin: 0 auto;
+	margin-top: 100px;
+  }
+
+</style>
