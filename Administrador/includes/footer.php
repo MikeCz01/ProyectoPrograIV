@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
     selectable: true,
     selectMirror: true,
     select: function(arg) {
-      var title = prompt('Event Title:');
+      var title = prompt('Agregar Evento:');
       if (title) {
         calendar.addEvent({
           title: title,
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
       calendar.unselect()
     },
     eventClick: function(arg) {
-      if (confirm('Are you sure you want to delete this event?')) {
+      if (confirm('¿Deseas eliminar el evento?')) {
         arg.event.remove()
       }
     },
@@ -77,8 +77,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   #calendar {
 	max-height: 700px;
-    max-width: 900px;
-    margin: 0 auto;
+    max-width: 1000px;
+    margin: 0 auto 0 300px;
 	margin-top: 100px;
   }
 
