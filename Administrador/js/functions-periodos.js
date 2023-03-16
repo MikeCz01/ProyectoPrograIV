@@ -80,7 +80,7 @@ function editarPeriodo(id){
                 var data = JSON.parse(request.responseText);
                 if(data.status){
 
-                    document.querySelector('#idperiodo').value = data.data.period_id;
+                    document.querySelector('#idperiodo').value = data.data.periodo_id;
                     document.querySelector('#nombre').value = data.data.nombre_periodo;
                     document.querySelector('#listEstado').value = data.data.estado;
 
