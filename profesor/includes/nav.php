@@ -25,10 +25,12 @@ $rown = $queryn->rowCount();
           </div>
       </div>
       <ul class="app-menu">
+          <li><a class="app-menu__item" href="index.php">
+          <i class="app-menu__icon fa fa-home"></i><span class="app-menu__label">Inicio</span></a></li>
           <li class="treeview">
-              <a class="app-menu_item" href="#" data-toggle="treeview">
-                  <i class="app-menu-icon fa fa-laptop"></i>
-                  <span class="app-menu_label">Mis Cursos</span>
+              <a class="app-menu__item" href="#" data-toggle="treeview">
+                  <i class="app-menu__icon fa fa-laptop"></i>
+                  <span class="app-menu__label">Mis Cursos</span>
                   <i class="treeview-indicator fa fa-angle-right"></i>
               </a>
               <ul class="treeview-menu">
@@ -41,10 +43,11 @@ $rown = $queryn->rowCount();
                   <?php }} ?>
               </ul>
           </li>
+
           <li class="treeview">
-              <a class="app-menu_item" href="#" data-toggle="treeview">
-                  <i class="app-menu-icon fa fa-laptop"></i>
-                  <span class="app-menu_label">Calificaciones</span>
+              <a class="app-menu__item" href="#" data-toggle="treeview">
+                  <i class="app-menu__icon fa fa-laptop"></i>
+                  <span class="app-menu__label">Calificaciones</span>
                   <i class="treeview-indicator fa fa-angle-right"></i>
               </a>
               <ul class="treeview-menu">
@@ -57,6 +60,8 @@ $rown = $queryn->rowCount();
                   <?php }} ?>
               </ul>
           </li>
+
+
           <li><a class="app-menu__item" href="../logout.php"><i class="app-menu__icon fas fa-sign-out"></i><span
                       class="app-menu__label">Log Out</span></a></li>
       </ul>

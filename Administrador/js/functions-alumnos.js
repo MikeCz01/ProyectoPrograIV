@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function(){
         var fecha_nac= document.querySelector('#fecha_nac').value;
         var fecha_reg = document.querySelector('#fecha_reg').value;
         var estado = document.querySelector('#listEstado').value;
-        
+    
         if(nombre == '' || direccion == '' || cedula == '' || telefono == '' || correo == '' || fecha_nac== '' || fecha_reg== ''){
             swal('Atención','Todos los campos son obligatorios','error');
             return false;
@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function(){
         request.send(form);
         request.onreadystatechange = function(){
             if(request.readyState == 4 && request.status == 200) {
+                debugger;
                 var data = JSON.parse(request.responseText);
                 if(data.status){
                     $('#modalAlumno').modal('hide'); 
