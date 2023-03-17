@@ -5,6 +5,12 @@ $(document).ready(function () {
   $("#loginProfesor").on("click", function () {
     loginProfesor();
   });
+  $("#loginAlumno").on("click", function () {
+    loginAlumno();
+  });
+  $("#logoutbtn").on("click", function () {
+    logout();
+  });
 });
 
 function loginUsuario() {
@@ -48,6 +54,37 @@ function loginProfesor() {
       if (data.indexOf("Redirecting") >= 0) {
         window.location = "Profesor/";
       }
+    },
+  });
+}
+
+function loginAlumno() {
+  debugger;
+  var loginAlumno = $("#usuarioAlumno").val();
+  var passAlumno = $("#passAlumno").val();
+
+  $.ajax({
+    url: "./includes/loginAlumno.php",
+    method: "POST",
+    data: {
+      login: loginAlumno,
+      pass: passAlumno,
+    },
+    success: function (data) {
+      $("#messageAlumno").html(data);
+      if (data.indexOf("Redirecting") >= 0) {
+        window.location = "Alumno/";
+      }
+    },
+  });
+}
+
+function logout() {
+  $.ajax({
+    url: "../logout.php",
+    method: "POST",
+    success: function () {
+      window.location = "/ProyectoPrograIV/";
     },
   });
 }

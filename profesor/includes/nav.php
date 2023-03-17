@@ -7,6 +7,12 @@
 $query = $pdo->prepare($sql);
 $query->execute(array($idprofesor));
 $row = $query->rowCount();
+
+$sqln = "SELECT * FROM profesor_materia as pm INNER JOIN grados as g on pm.grado_id = g.grado_id inner join aulas as a on pm.aula_id = a.aula_id inner join profesor as p on pm.profesor_id = p.profesor_id inner join materias as m on pm.materia_id = m.materia_id where pm.estado !=0 and pm.profesor_id = ?";
+$queryn = $pdo->prepare($sqln);
+$queryn->execute(array($idprofesor));
+$rown = $queryn->rowCount();
+
    ?>
 
   <!-- Sidebar menu-->
@@ -32,6 +38,22 @@ $row = $query->rowCount();
                   <li><a class="treeview-item" href="contenido.php?curso=<?=$data['pm_id']?>"><i
                               class="icon fa fa-circle-o"></i><?= $data['nombre_materia']; ?> - <?=
       $data['nombre_grado']; ?> - <?= $data['nombre_aula']; ?></a></li>
+                  <?php }} ?>
+              </ul>
+          </li>
+          <li class="treeview">
+              <a class="app-menu_item" href="#" data-toggle="treeview">
+                  <i class="app-menu-icon fa fa-laptop"></i>
+                  <span class="app-menu_label">Calificaciones</span>
+                  <i class="treeview-indicator fa fa-angle-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                  <?php if ($rown > 0) {
+    while ($datan = $queryn->fetch()) {
+      ?>
+                  <li><a class="treeview-item" href="notas.php?curso=<?=$datan['pm_id']?>"><i
+                              class="icon fa fa-circle-o"></i><?= $datan['nombre_materia']; ?> - <?=
+      $datan['nombre_grado']; ?> - <?= $datan['nombre_aula']; ?></a></li>
                   <?php }} ?>
               </ul>
           </li>

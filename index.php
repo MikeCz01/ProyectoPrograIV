@@ -39,8 +39,8 @@ header('Location: profesor/');
                             type="button" role="tab" aria-controls="profile" aria-selected="false">Docente</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
-                            type="button" role="tab" aria-controls="profile" aria-selected="false">Alumno</button>
+                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#alumno"
+                            type="button" role="tab" aria-controls="alumno" aria-selected="false">Alumno</button>
                     </li>
 
                 </ul>
@@ -64,6 +64,17 @@ header('Location: profesor/');
                             <div id="messageProfesor"></div>
                             <input type="password" name="passProfesor" id="passProfesor" placeholder="Contraseña">
                             <button id="loginProfesor" type="button">INICIAR SESION</button>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <form action="" onsubmit="return validar()">
+                            <label for="usuario">Usuario</label>
+                            <input type="text" name="usuarioAlumno" id="usuarioAlumno"
+                                placeholder="Nombre de usuario">
+                            <label for="password">Contraseña</label>
+                            <div id="messageAlumno"></div>
+                            <input type="password" name="passAlumno" id="passAlumno" placeholder="Contraseña">
+                            <button id="loginAlumno" type="button">INICIAR SESION</button>
                         </form>
                     </div>
                 </div>

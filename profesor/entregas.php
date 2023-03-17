@@ -14,12 +14,12 @@ require_once '../includes/funciones.php';
 
  $idProfesor = $_SESSION['profesor_id'];
 
-$sql = "select *, date_format(fecha,'%d/%m/%Y as fecha' from evaluaciones where contenido_id = $contenido and evaluacion_id = $evaluacion";
+$sql = "SELECT *, date_format(fecha,'%d/%m/%Y as fecha' from evaluaciones where contenido_id = $contenido and evaluacion_id = $evaluacion";
 $query = $pdo->prepare($sql);
 $query->execute();
 $row = $query->rowCount();
 
-$sqla = "select * from ev_entregadas as ev inner join alumnos as a on ev.alumno_id = a-alumno_id inner join evaluaciones as eva on ev.evaluacion_id = eva.evaluacion_id 
+$sqla = "SELECT * from ev_entregadas as ev inner join alumnos as a on ev.alumno_id = a-alumno_id inner join evaluaciones as eva on ev.evaluacion_id = eva.evaluacion_id 
 inner join contenidos as c on eva.contenido_id = c.contenido_id where contenido_id = ?";
 $querya = $pdo->prepare($sqla);
 $querya->execute(array($evalacion));

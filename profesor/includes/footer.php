@@ -23,5 +23,6 @@
     <script src="js/functions-materia.js"></script>
     <script src="js/functions-periodos.js"></script>
     <script src="js/functions-actividades.js"></script>
+    <script src="../js/login.js"></script>
   </body>
 </html>
