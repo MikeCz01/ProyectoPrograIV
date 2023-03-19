@@ -32,6 +32,9 @@
            <li><a class="app-menu__item" href="lista_profesor_materia.php"><i
                        class="app-menu__icon fas fa-list-alt"></i><span class="app-menu__label">Procesos Docentes</span></a>
            </li>
+           <li><a class="app-menu__item" href="lista_alumno_profesor.php"><i
+                       class="app-menu__icon fas fa-list-alt"></i><span class="app-menu__label">Procesos Alumnos</span></a>
+           </li>
            <li><a class="app-menu__item" href="../logout.php"><i class="app-menu__icon fas fa-sign-out"></i><span
                        class="app-menu__label">Log Out</span></a></li>
        </ul>

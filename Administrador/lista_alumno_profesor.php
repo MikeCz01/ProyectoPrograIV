@@ -5,8 +5,8 @@
  <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fas fa-chalkboard-teacher"></i> Lista Procesos Alumnos</h1>
-          <button class= "btn btn-success" type="button" onclick="openModalAlumnoProfesore()">Nuevo Proceso Alumno</button>
+          <h1><i class="fas fa-chalkboard-teacher"></i> Lista de Procesos Alumnos</h1>
+          <button class= "btn btn-success" type="button" onclick="openModalAlumnoProfesor()">Nuevo Proceso Alumno</button>
           <br>
         </div>
         <ul class="app-breadcrumb breadcrumb">
@@ -19,7 +19,7 @@
           <div class="tile">
           <div class="tile-body">
               <div class="table-responsive">
-                <table class="table table-hover table-bordered" id="tablealumnosprofesor">
+                <table class="table table-hover table-bordered" id="tablealumnoprofesor">
                   <thead>
                     <tr>
                       <th>Acciones</th>
@@ -28,7 +28,6 @@
                       <th>Nombre del Docente</th>
                       <th>Grado</th>
                       <th>Materia</th>
-                      <th>Periodo</th>
                       <th>Periodo</th>
                       <th>Estado</th>
                     </tr>
