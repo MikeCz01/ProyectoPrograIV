@@ -4,7 +4,9 @@ if(!empty($_SESSION['active'])){
     header('Location: administrador/');
 }else if(!empty($_SESSION['activeP'])){
 header('Location: profesor/');
-}
+}else if(!empty($_SESSION['activeA'])){
+    header('Location: Alumno/');
+    }
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +41,7 @@ header('Location: profesor/');
                             type="button" role="tab" aria-controls="profile" aria-selected="false">Docente</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#alumno"
+                        <button class="nav-link" id="alumno-tab" data-bs-toggle="tab" data-bs-target="#alumno"
                             type="button" role="tab" aria-controls="alumno" aria-selected="false">Alumno</button>
                     </li>
 
@@ -66,7 +68,7 @@ header('Location: profesor/');
                             <button id="loginProfesor" type="button">INICIAR SESION</button>
                         </form>
                     </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="tab-pane fade" id="alumno" role="tabpanel" aria-labelledby="alumno-tab">
                         <form action="" onsubmit="return validar()">
                             <label for="usuario">Usuario</label>
                             <input type="text" name="usuarioAlumno" id="usuarioAlumno"

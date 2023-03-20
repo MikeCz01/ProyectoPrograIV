@@ -1,49 +1,66 @@
-   <!-- Sidebar menu-->
-   <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
-    <aside class="app-sidebar">
-      <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" alt="User Image">
-        <div>
-          <p class="app-sidebar__user-name">John Doe</p>
-          <p class="app-sidebar__user-designation">Frontend Developer</p>
-        </div>
+  <?php
+  require_once '../includes/conexion.php';
+  session_start();
+  $idAlumno = $_SESSION['alumno_id'];
+
+  $sql = "SELECT * FROM alumno_profesor as ap INNER JOIN alumnos as al on ap.alumno_id = al.alumno_id inner join profesor_materia as pm on ap.pm_id = pm.pm_id 
+  inner join grados as g on pm.grado_id = g.grado_id inner join aulas as a on pm.aula_id = a.aula_id inner join profesor as p on pm.profesor_id = p.profesor_id
+  inner join materias as m on pm.materia_id = m.materia_id where al.alumno_id = $idAlumno";
+$query = $pdo->prepare($sql);
+$query->execute();
+$row = $query->rowCount();
+
+
+   ?>
+
+  <!-- Sidebar menu-->
+  <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+  <aside class="app-sidebar">
+      <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="./image/alumno.png" alt="User Image">
+          <div>
+              <p class="app-sidebar__user-name"><?=$_SESSION['nombre'] ?></p>
+              <p class="app-sidebar__user-designation">Alumno</p>
+          </div>
       </div>
       <ul class="app-menu">
-        <li><a class="app-menu__item" href="dashboard.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">UI Elements</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="bootstrap-components.html"><i class="icon fa fa-circle-o"></i> Bootstrap Elements</a></li>
-            <li><a class="treeview-item" href="https://fontawesome.com/v4.7.0/icons/" target="_blank" rel="noopener"><i class="icon fa fa-circle-o"></i> Font Icons</a></li>
-            <li><a class="treeview-item" href="ui-cards.html"><i class="icon fa fa-circle-o"></i> Cards</a></li>
-            <li><a class="treeview-item" href="widgets.html"><i class="icon fa fa-circle-o"></i> Widgets</a></li>
-          </ul>
-        </li>
-        <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">Charts</span></a></li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">Forms</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="form-components.html"><i class="icon fa fa-circle-o"></i> Form Components</a></li>
-            <li><a class="treeview-item" href="form-custom.html"><i class="icon fa fa-circle-o"></i> Custom Components</a></li>
-            <li><a class="treeview-item" href="form-samples.html"><i class="icon fa fa-circle-o"></i> Form Samples</a></li>
-            <li><a class="treeview-item" href="form-notifications.html"><i class="icon fa fa-circle-o"></i> Form Notifications</a></li>
-          </ul>
-        </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Tables</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="table-basic.html"><i class="icon fa fa-circle-o"></i> Basic Tables</a></li>
-            <li><a class="treeview-item" href="table-data-table.html"><i class="icon fa fa-circle-o"></i> Data Tables</a></li>
-          </ul>
-        </li>
-        <li class="treeview is-expanded"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Pages</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item active" href="blank-page.html"><i class="icon fa fa-circle-o"></i> Blank Page</a></li>
-            <li><a class="treeview-item" href="page-login.html"><i class="icon fa fa-circle-o"></i> Login Page</a></li>
-            <li><a class="treeview-item" href="page-lockscreen.html"><i class="icon fa fa-circle-o"></i> Lockscreen Page</a></li>
-            <li><a class="treeview-item" href="page-user.html"><i class="icon fa fa-circle-o"></i> User Page</a></li>
-            <li><a class="treeview-item" href="page-invoice.html"><i class="icon fa fa-circle-o"></i> Invoice Page</a></li>
-            <li><a class="treeview-item" href="page-calendar.html"><i class="icon fa fa-circle-o"></i> Calendar Page</a></li>
-            <li><a class="treeview-item" href="page-mailbox.html"><i class="icon fa fa-circle-o"></i> Mailbox</a></li>
-            <li><a class="treeview-item" href="page-error.html"><i class="icon fa fa-circle-o"></i> Error Page</a></li>
-          </ul>
-        </li>
-        <li><a class="app-menu__item" href="docs.html"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Docs</span></a></li>
+          <li><a class="app-menu__item" href="index.php">
+                  <i class="app-menu__icon fa fa-home"></i><span class="app-menu__label">Inicio</span></a></li>
+          <li class="treeview">
+              <a class="app-menu__item" href="#" data-toggle="treeview">
+                  <i class="app-menu__icon fa fa-laptop"></i>
+                  <span class="app-menu__label">Mis Cursos</span>
+                  <i class="treeview-indicator fa fa-angle-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                  <?php if ($row > 0) {
+    while ($data = $query->fetch()) {
+      ?>
+                  <li><a class="treeview-item" href="contenido.php?curso=<?=$data['pm_id']?>"><i
+                              class="icon fa fa-circle-o"></i><?= $data['nombre_materia']; ?> - <?=
+      $data['nombre_grado']; ?> - <?= $data['nombre_aula']; ?></a></li>
+                  <?php }} ?>
+              </ul>
+          </li>
+
+          <li class="treeview">
+              <a class="app-menu__item" href="#" data-toggle="treeview">
+                  <i class="app-menu__icon fa fa-laptop"></i>
+                  <span class="app-menu__label">Calificaciones</span>
+                  <i class="treeview-indicator fa fa-angle-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                  <?php if ($rown > 0) {
+    while ($datan = $queryn->fetch()) {
+      ?>
+                  <li><a class="treeview-item" href="notas.php?curso=<?=$datan['pm_id']?>"><i
+                              class="icon fa fa-circle-o"></i><?= $datan['nombre_materia']; ?> - <?=
+      $datan['nombre_grado']; ?> - <?= $datan['nombre_aula']; ?></a></li>
+                  <?php }} ?>
+              </ul>
+          </li>
+
+
+          <li><a class="app-menu__item" href="../logout.php"><i class="app-menu__icon fas fa-sign-out"></i><span
+                      class="app-menu__label">Log Out</span></a></li>
       </ul>
-    </aside>
+  </aside>

@@ -15,6 +15,8 @@
         $fecha_nac = $_POST['fecha_nac'];
         $fecha_reg = $_POST['fecha_reg'];
         $estado = $_POST['listEstado'];
+        $clave = $_POST['clave'];
+        $clave = password_hash($clave,PASSWORD_DEFAULT);
 
        
 
@@ -60,5 +62,6 @@
             }
     }
     echo json_encode($respuesta, JSON_UNESCAPED_UNICODE);
+}
 }
 ?>

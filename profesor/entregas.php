@@ -121,7 +121,7 @@ if($datan > 0){
     </div>
     
     <div class="row">
-        <a href="contenido.php?curso=" <?= $curso ?>class="btn btn-info">
+        <a href="contenido.php?curso=<?= $curso ?>"class="btn btn-info">
             << Volver Atras</a>
     </div>
 </main>
