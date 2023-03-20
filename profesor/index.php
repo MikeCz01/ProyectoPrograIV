@@ -4,7 +4,7 @@ require_once '../includes/conexion.php';
 
 $idprofesor = $_SESSION['profesor_id'];
 
-$sql = "SELECT * FROM profesor_materia as pm INNER JOIN grados as g on pm.grado_id = g.grado_id inner join aulas as a on pm.aula_id = a.aula_id inner join profesor as p on pm.profesor_id = p.profesor_id inner join materias as m on pm.materia_id = m.materia_id where pm.estado != 0 and pm.profesor_id = ?";
+$sql = "SELECT * FROM profesor_materia as pm INNER JOIN grados as g on pm.grado_id = g.grado_id inner join aulas as a on pm.aula_id = a.aula_id inner join profesor as p on pm.profesor_id = p.profesor_id inner join materias as m on pm.materia_id = m.materia_id where pm.estadopm != 0 and pm.profesor_id = ?";
 $query = $pdo->prepare($sql);
 $query->execute(array($idprofesor));
 $row = $query->rowCount();
@@ -26,8 +26,8 @@ $row = $query->rowCount();
         while ($data = $query->fetch()) {
           ?>
         <div class="col-md-4 text-center border mt-3 p-4 bg-light">
-            <div class="card m-2 shadow" style="width: 23rem;">
-                <img src="images/card-school.jpg" class="card-imag-top" alt="...">
+            <div class="card m-2 shadow">
+                <img src="image/grado.jpg" class="card-imag-top" alt="...">
                 <div class="card-body">
                     <h4 class="card-title text center"><?= $data['nombre_materia'] ?></h4>
                     <h5 class="card-title">Grado<kbd class="bg-info"><?= $data['nombre_grado'] ?></kbd> - Aula <kbd

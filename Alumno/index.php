@@ -28,7 +28,7 @@ $row = $query->rowCount();
         while ($data = $query->fetch()) {
           ?>
         <div class="col-md-4 text-center border mt-3 p-4 bg-light">
-            <div class="card m-2 shadow" style="width: 23rem;">
+            <div class="card m-2 shadow">
                 <img src="images/card-school.jpg" class="card-imag-top" alt="...">
                 <div class="card-body">
                     <h4 class="card-title text center"><?= $data['nombre_materia'] ?></h4>

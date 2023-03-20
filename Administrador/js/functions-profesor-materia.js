@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function(){
         var materia = document.querySelector('#listMateria').value;
         var periodo = document.querySelector('#listPeriodo').value;
         var estado = document.querySelector('#listEstado').value;
-
+debugger;
         if(nombre == '' || grado == '' || aula == '' || materia == '' || periodo == '' || estado == ''){
             swal('Atención','Todos los campos son obligatorios','error');
             return false;

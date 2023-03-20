@@ -3,12 +3,12 @@
   
   $idprofesor = $_SESSION['profesor_id'];
 
-  $sql = "SELECT * FROM profesor_materia as pm INNER JOIN grados as g on pm.grado_id = g.grado_id inner join aulas as a on pm.aula_id = a.aula_id inner join profesor as p on pm.profesor_id = p.profesor_id inner join materias as m on pm.materia_id = m.materia_id where pm.estado !=0 and pm.profesor_id = ?";
+  $sql = "SELECT * FROM profesor_materia as pm INNER JOIN grados as g on pm.grado_id = g.grado_id inner join aulas as a on pm.aula_id = a.aula_id inner join profesor as p on pm.profesor_id = p.profesor_id inner join materias as m on pm.materia_id = m.materia_id where pm.estadopm !=0 and pm.profesor_id = ?";
 $query = $pdo->prepare($sql);
 $query->execute(array($idprofesor));
 $row = $query->rowCount();
 
-$sqln = "SELECT * FROM profesor_materia as pm INNER JOIN grados as g on pm.grado_id = g.grado_id inner join aulas as a on pm.aula_id = a.aula_id inner join profesor as p on pm.profesor_id = p.profesor_id inner join materias as m on pm.materia_id = m.materia_id where pm.estado !=0 and pm.profesor_id = ?";
+$sqln = "SELECT * FROM profesor_materia as pm INNER JOIN grados as g on pm.grado_id = g.grado_id inner join aulas as a on pm.aula_id = a.aula_id inner join profesor as p on pm.profesor_id = p.profesor_id inner join materias as m on pm.materia_id = m.materia_id where pm.estadopm !=0 and pm.profesor_id = ?";
 $queryn = $pdo->prepare($sqln);
 $queryn->execute(array($idprofesor));
 $rown = $queryn->rowCount();
