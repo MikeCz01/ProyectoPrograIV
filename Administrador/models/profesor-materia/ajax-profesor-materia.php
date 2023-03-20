@@ -29,6 +29,7 @@
             if($idprofesormateria == ""){
                 $sql_insert = 'INSERT INTO profesor_materia (profesor_id, grado_id, aula_id, materia_id, periodo_id, estadopm) VALUES (?,?,?,?,?,?)';
                 $query_insert = $pdo->prepare($sql_insert);
+                $request = $query_insert->execute(array($profesor,$grado,$aula,$materia,$periodo,$status));
                 if($request){
                     $arrResponse = array('status' => true, 'msg' => 'Proceso creado correctamente');
                 }

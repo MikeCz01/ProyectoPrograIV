@@ -2,11 +2,11 @@
  require_once '../../../includes/conexion.php';
 
  if($_POST){
-    $idprofesormateria = $_POST['id'];
+    $idalumnoprofesor = $_POST['id'];
 
-    $sql = "UPDATE profesor_materia SET estadopm = 0 WHERE pm_id = ?";
+    $sql = "UPDATE alumno_profesor SET estadop = 0 WHERE ap_id = ?";
     $query = $pdo -> prepare($sql);
-    $result =$query->execute(array($idprofesormateria));
+    $result =$query->execute(array($idalumnoprofesor));
 
     if($result){
         $respuesta = array('status' => true, 'msg' => 'Proceso eliminado correctamente');
