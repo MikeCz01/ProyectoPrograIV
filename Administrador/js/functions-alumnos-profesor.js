@@ -86,7 +86,7 @@ function showProfesor(){
             if(request.readyState == 4 && request.status == 200) {
                 var data = JSON.parse(request.responseText);
                 data.forEach(function(valor){
-                    data+= '<option value="'+valor.pm_id+'">'+valor.nombre+', '+valor.nombre_grado+', '+valor.nombre_aula+', '+valor.nombre_materia+'</option>';
+                    data+= '<option value="'+valor.pm_id+'">Docente: '+valor.nombre+',Grado: '+valor.nombre_grado+',Aula: '+valor.nombre_aula+',Materia: '+valor.nombre_materia+'</option>';
                 });
                 document.querySelector('#listProfesor').innerHTML = data;
             }
