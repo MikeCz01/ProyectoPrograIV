@@ -14,8 +14,8 @@
     <!-- Data table plugin-->
     <script type="text/javascript" src="../js/plugins/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
-	<script src='../js/plugins/index.global.js'></script>
-	<script src='../js/locales/es.global.js'></script>
+	  <script src='../js/plugins/index.global.js'></script>
+	  <script src='../js/locales/es.global.js'></script>
     <script src="js/functions-usuarios.js"></script>
     <script src="js/functions-profesores.js"></script>
     <script src="js/functions-alumnos.js"></script>
@@ -24,6 +24,8 @@
     <script src="js/functions-materia.js"></script>
     <script src="js/functions-periodos.js"></script>
     <script src="js/functions-actividades.js"></script>
+    <script src="js/functions-profesor-materia.js"></script>
+    <script src="js/functions-alumno-profesor.js"></script>
     <script src="../js/login.js"></script>
 	<script>
 

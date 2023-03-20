@@ -8,6 +8,8 @@
            </div>
        </div>
        <ul class="app-menu">
+       <li><a class="app-menu__item" href="index.php"><i class="app-menu__icon fa-solid fa-house"></i><span
+                       class="app-menu__label">Home</span></a></li>
            <li><a class="app-menu__item" href="lista_usuarios.php"><i class="app-menu__icon fas fa-users"></i><span
                        class="app-menu__label">Usuarios</span></a></li>
            <li><a class="app-menu__item" href="lista_profesores.php"><i
@@ -27,7 +29,13 @@
            <li><a class="app-menu__item" href="lista_actividades.php"><i
                        class="app-menu__icon fas fa-list-alt"></i><span class="app-menu__label">Actividades</span></a>
            </li>
-           <li><a class="app-menu__item" href="../index.php"><i class="app-menu__icon fas fa-sign-out"></i><span
+           <li><a class="app-menu__item" href="lista_profesor_materia.php"><i
+                       class="app-menu__icon fas fa-list-alt"></i><span class="app-menu__label">Procesos Docentes</span></a>
+           </li>
+           <li><a class="app-menu__item" href="lista_alumno_profesor.php"><i
+                       class="app-menu__icon fas fa-list-alt"></i><span class="app-menu__label">Procesos Alumnos</span></a>
+           </li>
+           <li><a class="app-menu__item" href="../logout.php"><i class="app-menu__icon fas fa-sign-out"></i><span
                        class="app-menu__label">Log Out</span></a></li>
        </ul>
    </aside>
