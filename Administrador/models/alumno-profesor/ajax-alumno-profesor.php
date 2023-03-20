@@ -6,7 +6,7 @@
         $respuesta = array('status' => false, 'msg' => 'Todos los campos son necesarios');
     }else{
         $idalumnoprofesor = $_POST['idalumnoprofesor'];
-        $profesor = $_POST['nombre'];
+        $profesor = $_POST['listProfesor'];
         $alumno = $_POST['listAlumno'];
         $periodo = $_POST['listPeriodo'];
         $status = $_POST['listEstado'];
@@ -24,8 +24,8 @@
         if($resultInsert > 0){
             $arrResponse = array('status' => false, 'msg' => 'Datos Existentes, seleccione otros');
         }else{
-            if($idprofesormateria == ""){
-                $sql_insert = 'INSERT INTO profesor_materia (alumno_id,pm_id,periodo_id,estadop) VALUES (?,?,?,?)';
+            if($idalumnoprofesor == ""){
+                $sql_insert = 'INSERT INTO alumno_profesor (alumno_id, pm_id, periodo_id, estadop) VALUES (?,?,?,?)';
                 $query_insert = $pdo->prepare($sql_insert);
                 $request = $query_insert->execute(array($alumno,$profesor,$periodo,$status));
                 if($request){
@@ -36,11 +36,11 @@
         if($resultUpdate > 0){
             $arrResponse = array('status' => false, 'msg' => 'Datos Existentes, seleccione otros');
         }else{
-            if($idprofesormateria == ""){
+            if($idalumnoprofesor == ""){
                 $sql_update = 'UPDATE alumno_profesor SET alumno_id=?,pm_id =?,periodo_id =?,estadop = ? WHERE ap_id = ?';
                 $query_update = $pdo->prepare($sql_update);
                 $request2 = $query_update -> execute(array($alumno,$profesor,$periodo,$status,$idalumnoprofesor));
-                if($reqquest2){
+                if($request2){
                     $arrResponse = array('status' => true, 'msg' => 'Proceso actualizado correctamente');
                 }
             }

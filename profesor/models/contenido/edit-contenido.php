@@ -2,18 +2,19 @@
 
 require_once '../../../includes/conexion.php';
 
-if(!empty($_GET)){
+if(empty($_GET['idcontenido'])){
+    $respuesta = array('status' => false, 'msg' => 'No se pudo leer un id');
+}else{
     $idcontenido = $_GET['idcontenido'];
-
-    $sql = "Select * from contenidos where contenido_id = ?";
+    $sql = "SELECT * from contenidos where contenido_id = ?";
     $query = $pdo->prepare($sql);
     $query->execute(array($idcontenido));
-    $data = $query->fetch(PDO::FETCH_ASSOC);
+    $result = $query->fetch(PDO::FETCH_ASSOC);
 
-    if(empty($result));{
+    if($result<0){
         $respuesta = array('status' => false, 'msg' =>  'datos no encontrados');
     } else {
-        $respuesta = array('status' => false, 'data' => $result);
+        $respuesta = array('status' => true, 'data' => $result);
     }
     echo json_encode($respuesta,JSON_UNESCAPED_UNICODE);
 }

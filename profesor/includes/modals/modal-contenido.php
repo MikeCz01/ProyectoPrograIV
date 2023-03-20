@@ -11,11 +11,11 @@
           <input type="hidden" name="idcurso" id="idcurso" value="<?= $curso; ?>">
           <div class="form-group">
             <label for="control-label">Titulo Del Contenido</label>
-            <input type="text" class="form-control" name="nombre" id="nombre">
+            <input type="text" class="form-control" name="titulo" id="titulo">
           </div>
           <div class="form-group">
             <label for="control-label">Descripcion Del Contenido</label>
-                <textarea name= "descripcion" class= "form-control" id="descripcion" rows="4"></textarea>
+                <textarea name="descripcion" class= "form-control" id="descripcion" rows="4"></textarea>
           </div>
           <div class="form-group">
             <label for="control-label">Adjuntar Material</label>

@@ -1,6 +1,6 @@
 <?php
-$baseDir = str_replace(basename($_SERVER['SCRIPT_NAME']), ''. $_SERVER['SCRIPt_NAME']);
-$baseUrl = 'http://'.$_SERVER['HTTP_HOST'].$baseDir;
+$baseDir = str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPt_NAME']);
+$baseUrl = 'http://' . $_SERVER['HTTP_HOST'] . $baseDir;
 define('BASE_URL', $baseUrl);
 
 function promedio($alumno){

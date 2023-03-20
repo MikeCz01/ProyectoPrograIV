@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function(){
         var profesor = document.querySelector('#listProfesor').value;
         var periodo = document.querySelector('#listPeriodo').value;
         var estado = document.querySelector('#listEstado').value;
-
+debugger;
         if(alumno == '' || profesor == '' || periodo == ''  || estado == ''){
             swal('Atención','Todos los campos son obligatorios','error');
             return false;

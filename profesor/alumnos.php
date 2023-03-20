@@ -1,16 +1,16 @@
 <?php
-if(!empty($_get['curso']))
+if(!empty($_GET['curso']))
 {
     $curso= $_GET['curso'];
 } else {
-    header("location: profesor/");
+    header("location: Profesor/");
 }
 require_once 'includes/header.php';
 require_once '../includes/conexion.php';
 
  $idProfesor = $_SESSION['profesor_id'];
 
-$sql = "SELECT * from alumno_profesor as ap inner join profesor_materia as pm on ap.pm_id = pm.pm_id inner join alumnos as a on ap.alumno = a.alumno_id where pm.pm_id = $curso";
+$sql = "SELECT * from alumno_profesor as ap inner join profesor_materia as pm on ap.pm_id = pm.pm_id inner join alumnos as a on ap.alumno_id  = a.alumno_id where pm.pm_id = $curso";
 $query = $pdo->prepare($sql);
 $query->execute();
 $row = $query->rowCount();

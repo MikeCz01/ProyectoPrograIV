@@ -7,9 +7,14 @@ document.addEventListener("DOMContentLoaded", function () {
     var titulo = document.querySelector("#titulo").value;
     var descripcion = document.querySelector("#descripcion").value;
     var material = document.querySelector("#file").value;
-
+    debugger;
     if (titulo == "" || descripcion == "") {
-      swal("Atencion", "Todos los campos son necesarios", "Error");
+      swal("Atencion", "Todos los campos son necesarios", "error");
+      return false;
+    }
+
+    if(material==""){
+      swal("Atencion", "Debe subir un archivo", "error");
       return false;
     }
 
@@ -28,13 +33,12 @@ document.addEventListener("DOMContentLoaded", function () {
           {
             title: "Crear/Actualizar Contenido",
             type: "success",
-            confirmButtontext: "Aceptar",
+            confirmButtonText: "Aceptar",
             closeOnConfirm: true,
           },
           function (confirm) {
-            if (confirm) {
-              if (data.status) ñ;
-              $("modalContenido").model("hide");
+            if (confirm && data.status) {
+              $("#modalContenido").modal("hide");
               location.reload();
               formContenido.reset();
             } else {
@@ -47,20 +51,18 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 });
 
-
 function openModalContenido() {
   document.querySelector("#idcontenido").value = "";
-  document.querySelector("#tituloModal").innerHTML = "Nuevo Contenido";
+  document.querySelector("#tituloModalActividad").innerHTML = "Nuevo Contenido";
   document.querySelector("#action").innerHTML = "Guardar";
   document.querySelector("#formContenido").reset();
   $("#modalContenido").modal("show");
 }
 
-
-function editarContenido() {
+function editarContenido(id) {
   var idcontenido = id;
 
-  document.querySelector("#tituloModal").innerHTML = "Actualizar Contenido";
+  document.querySelector("#tituloModalActividad").innerHTML = "Actualizar Contenido";
   document.querySelector("#action").innerHTML = "Actualizar";
 
   var request = window.XMLHttpRequest
@@ -71,6 +73,7 @@ function editarContenido() {
   request.open("GET", url, true);
   request.send();
   request.onreadystatechange = function () {
+    debugger;
     if (request.readyState == 4 && request.status == 200) {
       var data = JSON.parse(request.responseText);
       if (data.status) {
@@ -86,37 +89,44 @@ function editarContenido() {
   };
 }
 
+function eliminarContenido(id) {
+  var idcontenido = id;
 
-function eliminarProfesor(id){
-  var idprofesor = id;
-
-  swal({
-     title: "Eliminar Contenido",
-     type: "warning",
-     showCancelButton: true,
-     confirmButtontext: "Si, eliminar",
-     cancelbuttontext: "No, cancelar",
-     closeOnConfirm: false,
-     closeOnCancel: true 
-  },function(confirm){
-      if(confirm){
-         
-   var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
-   var url= './models/contenido/delet-contenido.php';
-   request.open('POST', url, true);
-   var strData  = "idprofesor="+idprofesor;
-   request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-   request.send(strData);
-   request.onreadystatechange = function(){
-       if(request.readyState == 4 && request.status == 200){
-           var data = JSON.parse(request.responseText);
-           if(data.status){
-            location.reload();
-           }else{
-               swal('Atención',data.msg,'error');
-           }
-       }
-   } 
+  swal(
+    {
+      title: "Eliminar Contenido",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Si, eliminar",
+      cancelButtonText: "No, cancelar",
+      closeOnConfirm: false,
+      closeOnCancel: true,
+    },
+    function (confirm) {
+      if (confirm) {
+        var request = window.XMLHttpRequest
+          ? new XMLHttpRequest()
+          : new ActiveXObject("Microsoft.XMLHTTP");
+        var url = "./models/contenido/delet-contenido.php";
+        request.open("POST", url, true);
+        var strData = "idcontenido=" + idcontenido;
+        request.setRequestHeader(
+          "Content-type",
+          "application/x-www-form-urlencoded"
+        );
+        request.send(strData);
+        request.onreadystatechange = function () {
+          debugger;
+          if (request.readyState == 4 && request.status == 200) {
+            var data = JSON.parse(request.responseText);
+            if (data.status) {
+              location.reload();
+            } else {
+              swal("Atención", data.msg, "error");
+            }
+          }
+        };
       }
-  })
+    }
+  );
 }
