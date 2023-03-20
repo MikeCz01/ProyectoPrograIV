@@ -2,11 +2,13 @@
 require_once 'includes/header.php';
 require_once '../includes/conexion.php';
 
-$idprofesor = $_SESSION['profesor_id'];
+$idAlumno = $_SESSION['alumno_id'];
 
-$sql = "SELECT * FROM profesor_materia as pm INNER JOIN grados as g on pm.grado_id = g.grado_id inner join aulas as a on pm.aula_id = a.aula_id inner join profesor as p on pm.profesor_id = p.profesor_id inner join materias as m on pm.materia_id = m.materia_id where pm.estado != 0 and pm.profesor_id = ?";
+$sql = "SELECT * FROM alumno_profesor as ap INNER JOIN alumnos as al on ap.alumno_id = al.alumno_id inner join profesor_materia as pm on ap.pm_id = pm.pm_id 
+inner join grados as g on pm.grado_id = g.grado_id inner join aulas as a on pm.aula_id = a.aula_id inner join profesor as p on pm.profesor_id = p.profesor_id
+inner join materias as m on pm.materia_id = m.materia_id where al.alumno_id = $idAlumno";
 $query = $pdo->prepare($sql);
-$query->execute(array($idprofesor));
+$query->execute();
 $row = $query->rowCount();
 
 ?>
@@ -34,7 +36,6 @@ $row = $query->rowCount();
                             class="bg-info"><?= $data
               ['nombre_aula'] ?></kbd></h5>
                     <a href="contenido.php?curso=<?= $data['pm_id'] ?>" class="btn btn-primary">Acceder</a>
-                    <a href="alumnos.php?curso=<?= $data['pm_id'] ?>" class="btn btn-primary">Ver Alumnos</a>
                 </div>
             </div>
         </div>

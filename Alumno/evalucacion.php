@@ -4,13 +4,12 @@ if(!empty($_get['curso']) || !empty($_get['curso']))
     $curso= $_GET['curso'];
     $contenido= $_GET['contenido'];
 } else {
-    header("location: profesor/");
+    header("location: Alumno/");
 }
 require_once 'includes/header.php';
 require_once '../includes/conexion.php';
- require_once 'includes/modals/modal-contenido.php';
 
- $idProfesor = $_SESSION['profesor_id'];
+$idalumno = $_SESSION['alumno_id'];
 
 $sql = "SELECT *, date_format(fecha,'%d/%m/%Y as fecha' from evaluaciones where contenido_id = $contenido";
 $query = $pdo->prepare($sql);
@@ -21,13 +20,13 @@ $row = $query->rowCount();
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-dashboard"></i> Asignar Evaluacion</h1>
+            <h1><i class="fa fa-dashboard"></i> Ver Evaluacion</h1>
             <button class="btn btn-success" type="button" onclick="openModalEvaluacion()">Nuevo Evaluacion</button>
             <br>
         </div>
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-            <li class="breadcrumb-item"><a href="#">Asignar Evaluacion</a></li>
+            <li class="breadcrumb-item"><a href="#">Ver Evaluacion</a></li>
         </ul>
     </div>
     <div class="row">
@@ -39,15 +38,9 @@ $row = $query->rowCount();
                 <div class="tile">
                     <div class="tile-tile-w-btn">
                         <h3 class="title"><?=$data['titulo']; ?></h3>
-                        <p><button class="btn btn-info-btn"
-                                onclick="editarEvaluacion(<?= $data['evaluacion_id']; ?>)"><?=$data['evaluacion_id']; ?>)"><i
-                                    class="fa fa-edit"></i>Editar Evaluacion</i>
-                            </button> <button class="btn btn-danger icon-btn"
-                                onclick="eliminarEvaluacion(<?= $data['evaluacion_id'] ?>)"><i
-                                    class="fa fa-delet"></i>Eliminar Evaluacion</button>
-                            <a class="btn btn-warning icon-btn"
+                        <p><a class="btn btn-warning icon-btn"
                                 href="entregas.php?curso=<?= $data['pm_id']; ?>&eva=<?= $data['evaluacion_id']; ?>"><i
-                                    class="fa fa-edit"></i>Ver Entregas</a>
+                                    class="fa fa-edit"></i>Realizar Entrega Entregas</a>
                         </p>
                     </div>
                     <div class="tile-body">

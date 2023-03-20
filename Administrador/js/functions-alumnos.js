@@ -38,13 +38,14 @@ document.addEventListener('DOMContentLoaded', function(){
         var edad = document.querySelector('#edad').value;
         var direccion = document.querySelector('#direccion').value;
         var cedula = document.querySelector('#cedula').value;
+        var clave = document.querySelector('#clave').value;
         var telefono = document.querySelector('#telefono').value;
         var correo = document.querySelector('#correo').value;
         var fecha_nac= document.querySelector('#fecha_nac').value;
         var fecha_reg = document.querySelector('#fecha_reg').value;
         var estado = document.querySelector('#listEstado').value;
     
-        if(nombre == '' || direccion == '' || cedula == '' || telefono == '' || correo == '' || fecha_nac== '' || fecha_reg== ''){
+        if(nombre == '' || direccion == '' || cedula == '' || telefono == '' || correo == '' || fecha_nac== '' || fecha_reg== '' || clave==''){
             swal('Atención','Todos los campos son obligatorios','error');
             return false;
         }
@@ -96,7 +97,7 @@ function editarAlumno(id){
             if(request.readyState == 4 && request.status == 200){
                 var data = JSON.parse(request.responseText);
                 if(data.status){
-
+                    
                     document.querySelector('#idalumno').value = data.data.alumno_id;
                     document.querySelector('#nombre').value = data.data.nombre_alumno;
                     document.querySelector('#edad').value = data.data.edad;
@@ -107,6 +108,7 @@ function editarAlumno(id){
                     document.querySelector('#fecha_nac').value = data.data.fecha_nac;
                     document.querySelector('#fecha_reg').value = data.data.fecha_reg;
                     document.querySelector('#listEstado').value = data.data.estado;
+                    document.querySelector('#clave').value = data.data.clave;
 
                     $('#modalAlumno').modal('show'); 
                 }else{

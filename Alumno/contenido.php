@@ -3,14 +3,13 @@ if(!empty($_get['curso']))
 {
     $curso= $_GET['curso'];
 } else {
-    header("location: profesor/");
+    header("location: Alumno/");
 }
 require_once 'includes/header.php';
 require_once '../includes/conexion.php';
 require_once '../includes/funciones.php';
- require_once 'includes/modals/modal-contenido.php';
 
- $idProfesor = $_SESSION['profesor_id'];
+ $idalumno = $_SESSION['alumno_id'];
 
 $sql = "SELECT * from contenidos as c inner join profesor_materia as pm on c.pm_id = pm.pm_id where pm.pm_id = $curso";
 $query = $pdo->prepare($sql);
@@ -22,7 +21,6 @@ $row = $query->rowCount();
     <div class="app-title">
         <div>
             <h1><i class="fa fa-dashboard"></i> Contenidos a Evaluar</h1>
-            <button class="btn btn-success" type="button" onclick="openModalContenido()">Nuevo Contenido</button>
             <br>
         </div>
         <ul class="app-breadcrumb breadcrumb">
@@ -39,15 +37,9 @@ $row = $query->rowCount();
                 <div class="tile">
                     <div class="tile-tile-w-btn">
                         <h3 class="title"><?=$data['titulo']; ?></h3>
-                        <p><button class="btn btn-info-btn"
-                                onclick="editarContenido(<?= $data['contenido_id']; ?>)"><?=$data['contenido_id']; ?>)"><i
-                                    class="fa fa-edit"></i>Editar Contenido</i>
-                            </button> <button class="btn btn-danger icon-btn"
-                                onclick="eliminarContenido(<?= $data['contenido_id'] ?>)"><i
-                                    class="fa fa-delet"></i>Eliminar Contenido</button>
-                            <a class="btn btn-warning icon-btn"
+                        <p><a class="btn btn-warning icon-btn"
                                 href="evaluacion.php?curso=<?= $data['pm_id']; ?>&contenido=<?= $data['contenido_id']; ?>"><i
-                                    class="fa fa-edit"></i>Asignar evaluacion</a>
+                                    class="fa fa-edit"></i>Ver Evaluación</a>
                         </p>
                     </div>
                     <div class="tile-body">
@@ -58,8 +50,8 @@ $row = $query->rowCount();
                             <div class="input-group-prepend">
                                 <div class="input-group-text"> <i class="fas fa-download"></i> </div>
                             </div>
-                            <a class="btn btn-primary" href="BASE_URL<?= $data['material']; ?>"
-                                target="_blank"> Material de Descarga</a>
+                            <a class="btn btn-primary" href="BASE_URL<?= $data['material']; ?>" target="_blank">
+                                Material de Descarga</a>
                         </div>
                     </div>
                 </div>

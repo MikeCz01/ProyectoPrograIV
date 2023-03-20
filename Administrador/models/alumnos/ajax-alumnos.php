@@ -15,6 +15,8 @@
         $fecha_nac = $_POST['fecha_nac'];
         $fecha_reg = $_POST['fecha_reg'];
         $estado = $_POST['listEstado'];
+        $clave = $_POST['clave'];
+        $clave = password_hash($clave,PASSWORD_DEFAULT);
 
        
 
@@ -27,14 +29,14 @@
             $respuesta = array('status' => false, 'msg' => 'Alumno Existente'); 
          }else{
              if($idalumno == ""){
-                 $sqlInsert = 'INSERT INTO alumnos (nombre_alumno,edad,direccion,cedula,telefono,correo,fecha_nac,fecha_reg,estado) VALUES (?,?,?,?,?,?,?,?,?)';
+                 $sqlInsert = 'INSERT INTO alumnos (nombre_alumno,edad,direccion,cedula,telefono,correo,fecha_nac,fecha_reg,estado,clave) VALUES (?,?,?,?,?,?,?,?,?,?)';
                  $queryInsert = $pdo -> prepare($sqlInsert);
-                 $request = $queryInsert -> execute(array($nombre,$edad,$direccion,$cedula,$telefono,$correo,$fecha_nac,$fecha_reg, $estado));
+                 $request = $queryInsert -> execute(array($nombre,$edad,$direccion,$cedula,$telefono,$correo,$fecha_nac,$fecha_reg, $estado, $clave));
                  $accion = 1;
              }else{
-                     $sqlUpdate = 'UPDATE alumnos SET nombre_alumno = ?, edad = ?, direccion = ?, cedula = ?, telefono = ?, correo = ?, fecha_nac = ?, fecha_reg = ?, estado =? WHERE alumno_id =?';
+                     $sqlUpdate = 'UPDATE alumnos SET nombre_alumno = ?, edad = ?, direccion = ?, cedula = ?, telefono = ?, correo = ?, fecha_nac = ?, fecha_reg = ?, estado = ?, clave = ? WHERE alumno_id =?';
                      $queryUpdate = $pdo -> prepare($sqlUpdate);
-                     $request = $queryUpdate -> execute(array($nombre,$edad,$direccion,$cedula,$telefono,$correo,$fecha_nac,$fecha_reg, $estado,$idalumno));
+                     $request = $queryUpdate -> execute(array($nombre,$edad,$direccion,$cedula,$telefono,$correo,$fecha_nac,$fecha_reg, $estado,$clave,$idalumno));
                      $accion = 2;
                  
              }

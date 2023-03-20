@@ -18,7 +18,7 @@ $rown = $queryn->rowCount();
   <!-- Sidebar menu-->
   <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
   <aside class="app-sidebar">
-      <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="images/user.png" alt="User Image">
+      <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="image/docente.png" alt="User Image">
           <div>
               <p class="app-sidebar__user-name"><?=$_SESSION['nombre'] ?></p>
               <p class="app-sidebar__user-designation">Profesor</p>

@@ -90,9 +90,22 @@ body {
     color: #fff;
     cursor: pointer;
 }
+#loginAlumno, #loginAlumno {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    padding: .7em;
+    border: none;
+    border-radius: 8px;
+    background: #153744;
+    color: #fff;
+    cursor: pointer;
+}
+
 
 .app-sidebar__user-avatar{
-    width: 48px;
+    width: 70px;
+    height: 70px;
     padding: 6px;
     background: #fff;
 }
