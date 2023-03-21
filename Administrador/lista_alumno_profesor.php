@@ -5,7 +5,7 @@
  <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fas fa-chalkboard-teacher"></i> Lista de Procesos Alumnos</h1>
+          <h1><i class="fa-sharp fa-solid fa-graduation-cap"></i> Lista de Procesos Alumnos</h1>
           <button class= "btn btn-success" type="button" onclick="openModalAlumnoProfesor()">Nuevo Proceso Alumno</button>
           <br>
         </div>
