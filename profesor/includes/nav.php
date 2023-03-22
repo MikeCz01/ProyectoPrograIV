@@ -29,7 +29,7 @@ $rown = $queryn->rowCount();
           <i class="app-menu__icon fa fa-home"></i><span class="app-menu__label">Inicio</span></a></li>
           <li class="treeview">
               <a class="app-menu__item" href="#" data-toggle="treeview">
-                  <i class="app-menu__icon fa fa-laptop"></i>
+                  <i class="app-menu__icon fas fa-chalkboard-teacher"></i>
                   <span class="app-menu__label">Mis Cursos</span>
                   <i class="treeview-indicator fa fa-angle-right"></i>
               </a>
@@ -46,7 +46,7 @@ $rown = $queryn->rowCount();
 
           <li class="treeview">
               <a class="app-menu__item" href="#" data-toggle="treeview">
-                  <i class="app-menu__icon fa fa-laptop"></i>
+                  <i class="app-menu__icon fas fa-book-open"></i>
                   <span class="app-menu__label">Calificaciones</span>
                   <i class="treeview-indicator fa fa-angle-right"></i>
               </a>

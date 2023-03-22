@@ -38,7 +38,6 @@ function loginUsuario() {
 }
 
 function loginProfesor() {
-  debugger;
   var loginProfesor = $("#usuarioProfesor").val();
   var passProfesor = $("#passProfesor").val();
 
@@ -59,7 +58,6 @@ function loginProfesor() {
 }
 
 function loginAlumno() {
-  debugger;
   var loginAlumno = $("#usuarioAlumno").val();
   var passAlumno = $("#passAlumno").val();
 

@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
     request.send(form);
     request.onreadystatechange = function () {
       if (request.readyState == 4 && request.status == 200) {
-        debugger;
         var data = JSON.parse(request.responseText);
         if (data.status) {
           swal(

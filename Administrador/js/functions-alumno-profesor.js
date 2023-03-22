@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function(){
         var profesor = document.querySelector('#listProfesor').value;
         var periodo = document.querySelector('#listPeriodo').value;
         var estado = document.querySelector('#listEstado').value;
-debugger;
         if(alumno == '' || profesor == '' || periodo == ''  || estado == ''){
             swal('Atención','Todos los campos son obligatorios','error');
             return false;
@@ -84,7 +83,6 @@ function showProfesor(){
         request.send();
         request.onreadystatechange = function(){
             if(request.readyState == 4 && request.status == 200) {
-                debugger;
                 var data = JSON.parse(request.responseText);
                 data.forEach(function(valor){
                     data+= '<option value="'+valor.pm_id+'">Docente: '+valor.nombre+',Grado: '+valor.nombre_grado+',Aula: '+valor.nombre_aula+',Materia: '+valor.nombre_materia+'</option>';
