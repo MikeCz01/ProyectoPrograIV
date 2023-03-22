@@ -2,7 +2,7 @@
 session_start();
 if(!empty($_POST)){
     if(empty($_POST['login']) || empty($_POST['pass'])) {
-    echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert"></button>Todos los campos son
+    echo '<div class="alert alert-danger">Todos los campos son
      necesarios</div>';
 } else {
  require_once 'conexion.php';
@@ -23,18 +23,18 @@ if(!empty($_POST)){
             $_SESSION['rol'] = $result['rol_id'];
             $_SESSION['nombre_rol'] = $result['nombre_rol'];
             
-         echo '<div class="alert alert-success"><button type="button" class-close" data-dismiss?"alert"></button>Redirecting</div>';
+         echo '<div class="alert alert-success">Redirecting</div>';
         }else{
-            echo '<div class="alert alert-warning"><button type="button" class-close" data-dismiss?"alert"></button>Usuario Inactivo, comuniquese con el admininstrador</div>';
+            echo '<div class="alert alert-warning">Usuario Inactivo, comuniquese con el admininstrador</div>';
         }
          
  }
  else{
-     echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert"></button>Usuario o Clave
+     echo '<div class="alert alert-danger">Usuario o Clave
      incorrectos </div>';
 }
   } else {
-     echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert"></button>Usuario o Clave
+     echo '<div class="alert alert-danger">Usuario o Clave
      incorrectos </div>';
 }
 }
