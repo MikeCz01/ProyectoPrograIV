@@ -5,7 +5,7 @@
  <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fas fa-chalkboard-teacher"></i> Listar Docentes y Materias</h1>
+          <h1><i class="fa-solid fa-person-chalkboard"></i> Lista de Procesos Docentes</h1>
           <button class= "btn btn-success" type="button" onclick="openModalDocenteMateria()">Nuevo Proceso</button>
           <br>
         </div>
