@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
     var titulo = document.querySelector("#titulo").value;
     var descripcion = document.querySelector("#descripcion").value;
     var material = document.querySelector("#file").value;
-    debugger;
     if (titulo == "" || descripcion == "") {
       swal("Atencion", "Todos los campos son necesarios", "error");
       return false;
@@ -73,7 +72,6 @@ function editarContenido(id) {
   request.open("GET", url, true);
   request.send();
   request.onreadystatechange = function () {
-    debugger;
     if (request.readyState == 4 && request.status == 200) {
       var data = JSON.parse(request.responseText);
       if (data.status) {
@@ -116,7 +114,6 @@ function eliminarContenido(id) {
         );
         request.send(strData);
         request.onreadystatechange = function () {
-          debugger;
           if (request.readyState == 4 && request.status == 200) {
             var data = JSON.parse(request.responseText);
             if (data.status) {

@@ -26,49 +26,8 @@
     <script src="js/functions-actividades.js"></script>
     <script src="js/functions-profesor-materia.js"></script>
     <script src="js/functions-alumno-profesor.js"></script>
+    <script src="js/calendar.js"></script>
     <script src="../js/login.js"></script>
-	<script>
-
-document.addEventListener('DOMContentLoaded', function() {
-  var calendarEl = document.getElementById('calendar');
-
-  var calendar = new FullCalendar.Calendar(calendarEl, {
-    headerToolbar: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay'
-    },
-    initialDate: '2023-01-12',
-    locale: 'es', // establece el idioma español
-    navLinks: true, // can click day/week names to navigate views
-    selectable: true,
-    selectMirror: true,
-    select: function(arg) {
-      var title = prompt('Agregar Evento:');
-      if (title) {
-        calendar.addEvent({
-          title: title,
-          start: arg.start,
-          end: arg.end,
-          allDay: arg.allDay
-        })
-      }
-      calendar.unselect()
-    },
-    eventClick: function(arg) {
-      if (confirm('¿Deseas eliminar el evento?')) {
-        arg.event.remove()
-      }
-    },
-    editable: true,
-    dayMaxEvents: true, // allow "more" link when too many events
-    events: [
-    ]
-  });
-
-  calendar.render();
-});
-</script>
 <style>
 
   body {

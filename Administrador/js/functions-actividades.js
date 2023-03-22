@@ -28,9 +28,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
         var idactividad = document.querySelector('#idactividad').value;
         var nombre = document.querySelector('#nombre').value;
+        var startdate = document.querySelector('#startdate').value;
+        var enddate = document.querySelector('#enddate').value;
         var estado = document.querySelector('#listEstado').value;
-        
-        if(nombre == ''){
+        var listDia = document.querySelector('#listDia').value;
+        if(nombre == '' || startdate == '' || enddate == '' || listDia == '' ){
             swal('Atención','Todos los campos son obligatorios','error');
             return false;
         }
@@ -42,12 +44,13 @@ document.addEventListener('DOMContentLoaded', function(){
         request.send(form);
         request.onreadystatechange = function(){
             if(request.readyState == 4 && request.status == 200) {
+
                 var data = JSON.parse(request.responseText);
                 if(data.status){
                     $('#modalActividad').modal('hide'); 
                     formActividad.reset();
                     swal('Actividad',data.msg,'success');
-                    tableactividades.ajax.reload();
+                    window.location = "/ProyectoPrograIV/";
                 }else{
                     swal('Atención',data.msg,'error');
                 }

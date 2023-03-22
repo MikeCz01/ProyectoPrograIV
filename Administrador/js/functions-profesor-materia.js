@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function(){
         var materia = document.querySelector('#listMateria').value;
         var periodo = document.querySelector('#listPeriodo').value;
         var estado = document.querySelector('#listEstado').value;
-debugger;
         if(nombre == '' || grado == '' || aula == '' || materia == '' || periodo == '' || estado == ''){
             swal('Atención','Todos los campos son obligatorios','error');
             return false;
@@ -88,8 +87,6 @@ function showProfesorMateria(){
         request.send();
         request.onreadystatechange = function(){
             if(request.readyState == 4 && request.status == 200) {
-                debugger;
-
                 var data = JSON.parse(request.responseText);
                 data.forEach(function(valor){
                     data+= '<option value="'+valor.profesor_id+'">'+valor.nombre+'</option>';

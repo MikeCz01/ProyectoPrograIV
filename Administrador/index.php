@@ -1,5 +1,6 @@
 <?php
 require_once 'includes/header.php';
+require_once 'includes/modals/modal_actividades.php';
 ?>
 <!DOCTYPE html>
 <html>
