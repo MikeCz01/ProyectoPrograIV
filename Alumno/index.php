@@ -29,7 +29,7 @@ $row = $query->rowCount();
           ?>
         <div class="col-md-4 text-center border mt-3 p-4 bg-light">
             <div class="card m-2 shadow">
-                <img src="images/card-school.jpg" class="card-imag-top" alt="...">
+                <img src="image/grado.jpg" class="card-imag-top" alt="...">
                 <div class="card-body">
                     <h4 class="card-title text center"><?= $data['nombre_materia'] ?></h4>
                     <h5 class="card-title">Grado<kbd class="bg-info"><?= $data['nombre_grado'] ?></kbd> - Aula <kbd

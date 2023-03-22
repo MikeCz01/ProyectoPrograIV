@@ -1,5 +1,5 @@
 <?php
-if(!empty($_get['curso']))
+if(!empty($_GET['curso']))
 {
     $curso= $_GET['curso'];
 } else {

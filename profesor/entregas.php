@@ -1,11 +1,11 @@
 <?php
-if(!empty($_get['curso']) || empty($_get['contenido'] || empty($_get['eva']))
+if(!empty($_GET['curso']) || !empty($_GET['contenido']) || !empty($_GET['eva']))
 {
     $curso= $_GET['curso'];
     $contenido= $_GET['contenido'];
     $evalacion = $_GET['eva'];
 } else {
-    header("location: profesor/");
+    header("location: Profesor/");
 }
 require_once 'includes/header.php';
 require_once '../includes/conexion.php';
@@ -14,22 +14,22 @@ require_once '../includes/funciones.php';
 
  $idProfesor = $_SESSION['profesor_id'];
 
-$sql = "SELECT *, date_format(fecha,'%d/%m/%Y as fecha' from evaluaciones where contenido_id = $contenido and evaluacion_id = $evaluacion";
+ $sql = "SELECT *,date_format(fecha,'%d/%m/%Y') as fecha from evaluaciones where contenido_id = $contenido and evaluacion_id = $evalacion";
 $query = $pdo->prepare($sql);
 $query->execute();
 $row = $query->rowCount();
 
-$sqla = "SELECT * from ev_entregadas as ev inner join alumnos as a on ev.alumno_id = a-alumno_id inner join evaluaciones as eva on ev.evaluacion_id = eva.evaluacion_id 
-inner join contenidos as c on eva.contenido_id = c.contenido_id where contenido_id = ?";
+$sqla = "SELECT * from ev_entregadas as ev inner join alumnos as a on ev.alumno_id = a.alumno_id inner join evaluaciones as eva on ev.evaluacion_id = eva.evaluacion_id 
+inner join contenidos as c on eva.contenido_id = c.contenido_id where ev.evaluacion_id = ?";
 $querya = $pdo->prepare($sqla);
 $querya->execute(array($evalacion));
-$row = $querya->rowCount();
+$rowa = $querya->rowCount();
 ?>
 
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-dashboard"></i> Evaluaciones Entregadas</h1>
+            <h1><i class="fa fa-dashboard"></i>Evaluaciones Entregadas</h1>
             <br>
         </div>
         <ul class="app-breadcrumb breadcrumb">
@@ -63,13 +63,13 @@ $row = $querya->rowCount();
     <div class="row mt-3">
                 <?php
                     if($rowa>0){
-                        while($data2 = $querya->fecth()){
+                        while($data2 = $querya->fetch()){
                             $valor ='';
                             $carga = '';
                             $alumno = $data2['alumno_id'];
-                            $ev_entregada = $data2['ev_entrega_id'];
+                            $ev_entregada = $data2['ev_entregadas_id'];
 
-$sqln = "select * from notas where ev_entregadas_id = $ev_entregadas";
+$sqln = "SELECT * from notas where ev_entregadas_id = $ev_entregada";
 $queryn = $pdo->prepare($sqln);
 $queryn->execute();
 $datan = $queryn->rowCount();
@@ -79,7 +79,7 @@ if($datan > 0){
 }else{
     require_once 'includes/modals/modal-nota.php';
     $valor = '<kbd class = "bg-danger">Sin Calificar</kbd>';
-    $cargar = '<button class = "btn btn-warning" onclick="modalNota()">Cargar Nota</button>';
+    $cargar = '<button class = "btn btn-warning" onclick="modalNota();">Cargar Nota</button>';
 }
                         
                     
@@ -92,7 +92,7 @@ if($datan > 0){
                     <tr>
                         <th>Alumno</th>
                         <th>Observacion</th>
-                        <th>MAterial</th>
+                        <th>Material</th>
                         <th>Estatus</th>
                         <th>Cargar Nota</th>
                     </tr>   
@@ -105,7 +105,7 @@ if($datan > 0){
                             <div class="input-group-prepend">
                                 <div class="input-group-text"> <i class="fas fa-download"></i> </div>
                             </div>
-                            <a class="btn btn-primary" href="BASE URL<?= $data['material']; ?>"
+                            <a class="btn btn-primary" href="BASE_URL<?= $data2['material_alumno']; ?>"
                                 target="_blank"> Material Alumno</a>
                         </div></td> 
                         <td><?= $valor ?></td> 
@@ -121,7 +121,7 @@ if($datan > 0){
     </div>
     
     <div class="row">
-        <a href="contenido.php?curso=<?= $curso ?>"class="btn btn-info">
+        <a href="evaluacion.php?curso=<?= $curso ?>&contenido=<?= $contenido ?>"class="btn btn-info">
             << Volver Atras</a>
     </div>
 </main>

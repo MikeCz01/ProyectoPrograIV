@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function(){
         },
         "columns":[
             {"data":"acciones"},
-            {"data":"pm_id"},
+            {"data":"ap_id"},
             {"data":"nombre_alumno"},
             {"data":"nombre"},
             {"data":"nombre_grado"},
@@ -84,6 +84,7 @@ function showProfesor(){
         request.send();
         request.onreadystatechange = function(){
             if(request.readyState == 4 && request.status == 200) {
+                debugger;
                 var data = JSON.parse(request.responseText);
                 data.forEach(function(valor){
                     data+= '<option value="'+valor.pm_id+'">Docente: '+valor.nombre+',Grado: '+valor.nombre_grado+',Aula: '+valor.nombre_aula+',Materia: '+valor.nombre_materia+'</option>';

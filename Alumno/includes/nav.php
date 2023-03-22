@@ -1,6 +1,5 @@
   <?php
   require_once '../includes/conexion.php';
-  session_start();
   $idAlumno = $_SESSION['alumno_id'];
 
   $sql = "SELECT * FROM alumno_profesor as ap INNER JOIN alumnos as al on ap.alumno_id = al.alumno_id inner join profesor_materia as pm on ap.pm_id = pm.pm_id 
@@ -9,6 +8,13 @@
 $query = $pdo->prepare($sql);
 $query->execute();
 $row = $query->rowCount();
+
+$sqln = "SELECT * FROM alumno_profesor as ap INNER JOIN alumnos as al on ap.alumno_id = al.alumno_id inner join profesor_materia as pm on ap.pm_id = pm.pm_id 
+inner join grados as g on pm.grado_id = g.grado_id inner join aulas as a on pm.aula_id = a.aula_id inner join profesor as p on pm.profesor_id = p.profesor_id
+inner join materias as m on pm.materia_id = m.materia_id where al.alumno_id = ?";
+$queryn = $pdo->prepare($sqln);
+$queryn->execute(array($idAlumno));
+$rown = $queryn->rowCount();
 
 
    ?>
@@ -52,7 +58,7 @@ $row = $query->rowCount();
                   <?php if ($rown > 0) {
     while ($datan = $queryn->fetch()) {
       ?>
-                  <li><a class="treeview-item" href="notas.php?curso=<?=$datan['pm_id']?>"><i
+                  <li><a class="treeview-item" href="list-notas.php?alumno=<?= $datan["alumno_id"] ?>&curso=<?=$datan['pm_id']?>"><i
                               class="icon fa fa-circle-o"></i><?= $datan['nombre_materia']; ?> - <?=
       $datan['nombre_grado']; ?> - <?= $datan['nombre_aula']; ?></a></li>
                   <?php }} ?>

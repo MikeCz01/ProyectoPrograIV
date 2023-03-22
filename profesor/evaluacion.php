@@ -1,5 +1,5 @@
 <?php
-if(!empty($_get['curso']) || !empty($_get['curso']))
+if(!empty($_GET['curso']) || !empty($_GET['contenido']))
 {
     $curso= $_GET['curso'];
     $contenido= $_GET['contenido'];
@@ -8,11 +8,11 @@ if(!empty($_get['curso']) || !empty($_get['curso']))
 }
 require_once 'includes/header.php';
 require_once '../includes/conexion.php';
- require_once 'includes/modals/modal-contenido.php';
+ require_once 'includes/modals/modal-evaluacion.php';
 
  $idProfesor = $_SESSION['profesor_id'];
 
-$sql = "SELECT *, date_format(fecha,'%d/%m/%Y as fecha' from evaluaciones where contenido_id = $contenido";
+$sql = "SELECT *,date_format(fecha,'%d/%m/%Y') as fecha from evaluaciones where contenido_id = $contenido";
 $query = $pdo->prepare($sql);
 $query->execute();
 $row = $query->rowCount();
@@ -39,20 +39,20 @@ $row = $query->rowCount();
                 <div class="tile">
                     <div class="tile-tile-w-btn">
                         <h3 class="title"><?=$data['titulo']; ?></h3>
-                        <p><button class="btn btn-info-btn"
-                                onclick="editarEvaluacion(<?= $data['evaluacion_id']; ?>)"><?=$data['evaluacion_id']; ?>)"><i
+                        <p><button class="btn btn-info"
+                                onclick="editarEvaluacion(<?= $data['evaluacion_id']; ?>)"><i
                                     class="fa fa-edit"></i>Editar Evaluacion</i>
                             </button> <button class="btn btn-danger icon-btn"
                                 onclick="eliminarEvaluacion(<?= $data['evaluacion_id'] ?>)"><i
                                     class="fa fa-delet"></i>Eliminar Evaluacion</button>
                             <a class="btn btn-warning icon-btn"
-                                href="entregas.php?curso=<?= $data['pm_id']; ?>&eva=<?= $data['evaluacion_id']; ?>"><i
+                                href="entregas.php?curso=<?= $curso ?>&contenido=<?= $data['contenido_id']; ?>&eva=<?= $data['evaluacion_id']; ?>"><i
                                     class="fa fa-edit"></i>Ver Entregas</a>
                         </p>
                     </div>
                     <div class="tile-body">
                         <b><?= $data['descripcion']; ?></b><br><br>
-                        <b>Fecha: <kbd class= "bg-info"><?= $data['fecha']; ?></kbd></b><br><br>
+                        <b>Fecha: <kbd class="bg-info"><?= $data['fecha']; ?></kbd></b><br><br>
                         <b>Valor: <?= $data['porcentaje']; ?></b>
                     </div>
                 </div>
@@ -61,7 +61,7 @@ $row = $query->rowCount();
         <?php } }?>
     </div>
     <div class="row">
-        <a href="contenido.php?curso=" <?= $curso ?>class="btn btn-info">
+        <a href="contenido.php?curso=<?= $curso ?>" class="btn btn-info">
             << Volver Atras</a>
     </div>
 </main>

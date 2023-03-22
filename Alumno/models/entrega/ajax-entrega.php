@@ -3,7 +3,7 @@ require_once '../../../includes/conexion.php';
 
 if(!empty($_POST)){
         if(trim($_POST['observacion'])==''||empty($_FILES['file'])){
-            $respuesta = array('status'=>false,'msg'=>'Todos los campos son necesarios')
+            $respuesta = array('status'=>false,'msg'=>'Todos los campos son necesarios');
         }else{
             $idevaluacion = $_POST['idevaluacion'];
             $idalumno = $_POST['idalumno'];
@@ -28,7 +28,7 @@ if(!empty($_POST)){
                 $request = $queryInsert->execute(array($idevaluacion,$idalumno,$destino,$observacion));
                 move_uploaded_file($url_temp,$destino);
                 if($request > 0){
-                    $respuesta = array('status'=>true,'msg'=>'Evaluacion enviada correctamente')
+                    $respuesta = array('status'=>true,'msg'=>'Evaluacion enviada correctamente');
                 }
             }
 

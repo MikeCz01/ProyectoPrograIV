@@ -2,11 +2,11 @@
  require_once '../../../includes/conexion.php';
 
  if(!empty($_POST)){
-    if(empty($_POST['listProfesor']) || empty($_POST['listGrado']) || empty($_POST['listAula']) || empty($_POST['listMateria']) || empty($_POST['listPeriodo'])){
+    if(empty($_POST['listProfesorMateria']) || empty($_POST['listGrado']) || empty($_POST['listAula']) || empty($_POST['listMateria']) || empty($_POST['listPeriodo'])){
         $respuesta = array('status' => false, 'msg' => 'Todos los campos son necesarios');
     }else{
         $idprofesormateria = $_POST['idprofesormateria'];
-        $profesor = $_POST['listProfesor'];
+        $profesor = $_POST['listProfesorMateria'];
         $grado = $_POST['listGrado'];
         $aula = $_POST['listAula'];
         $materia = $_POST['listMateria'];

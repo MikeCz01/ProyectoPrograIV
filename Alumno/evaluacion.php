@@ -1,8 +1,8 @@
 <?php
-if(!empty($_get['curso']) || !empty($_get['curso']))
+if(!empty($_GET['curso']) || !empty($_GET['contenido']))
 {
-    $curso= $_GET['curso'];
-    $contenido= $_GET['contenido'];
+    $curso = $_GET['curso'];
+    $contenido = $_GET['contenido'];
 } else {
     header("location: Alumno/");
 }
@@ -11,7 +11,7 @@ require_once '../includes/conexion.php';
 
 $idalumno = $_SESSION['alumno_id'];
 
-$sql = "SELECT *, date_format(fecha,'%d/%m/%Y as fecha' from evaluaciones where contenido_id = $contenido";
+$sql = "SELECT *, date_format(fecha,'%d/%m/%Y') as fecha from evaluaciones where contenido_id = $contenido";
 $query = $pdo->prepare($sql);
 $query->execute();
 $row = $query->rowCount();
@@ -39,7 +39,7 @@ $row = $query->rowCount();
                     <div class="tile-tile-w-btn">
                         <h3 class="title"><?=$data['titulo']; ?></h3>
                         <p><a class="btn btn-warning icon-btn"
-                                href="entregas.php?curso=<?= $data['pm_id']; ?>&eva=<?= $data['evaluacion_id']; ?>"><i
+                                href="entregas.php?curso=<?= $curso; ?>&contenido=<?= $contenido; ?>&eva=<?= $data['evaluacion_id']; ?>"><i
                                     class="fa fa-edit"></i>Realizar Entrega Entregas</a>
                         </p>
                     </div>

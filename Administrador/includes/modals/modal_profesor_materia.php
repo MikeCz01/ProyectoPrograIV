@@ -9,8 +9,8 @@
         <form id="formProfesorMateria" name="formProfesorMateria">
         <input type="hidden" name="idprofesormateria" id="idprofesormateria" value="">
           <div class="form-group">
-            <label for="listProfesor">Seleccione el Docente</label>
-            <select class="form-control"name="listProfesor" id="listProfesor">
+            <label for="listProfesorMateria">Seleccione el Docente</label>
+            <select class="form-control"name="listProfesorMateria" id="listProfesorMateria">
             <!--Contenido del ajax -->  
             </select>
           </div> 

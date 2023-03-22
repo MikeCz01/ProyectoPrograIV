@@ -3,7 +3,7 @@
 require_once '../../../includes/conexion.php';
 
 if(!empty($_POST)){
-    if(empty($_POST['titulo' || empty($_POST['descripcion']));{
+    if(empty($_POST['titulo']) || empty($_POST['descripcion'])){
         $respuesta = array('status' => false, 'msg' =>  'Todos los campos son necesarios');
     } else {
 
@@ -14,7 +14,7 @@ if(!empty($_POST)){
     $fecha = $_POST['fecha'];
     $valor = $_POST['valor'];
 
-         if($idevaluacion == 0){
+         if($idevaluacion == ""){
              $sqlInsert = 'INSERT INTO evaluaciones (titulo,descripcion,fecha,porcentaje,contenido_id) VALUES (?,?,?,?,?)';
              $queryInsert = $pdo -> prepare($sqlInsert);
              $request = $queryInsert -> execute(array($titulo,$descripcion,$fecha,$valor,$idcontenido));

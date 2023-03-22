@@ -15,14 +15,8 @@
     <!-- Data table plugin-->
     <script type="text/javascript" src="../js/plugins/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
-    <script src="js/functions-usuarios.js"></script>
-    <script src="js/functions-profesores.js"></script>
-    <script src="js/functions-alumnos.js"></script>
-    <script src="js/functions-grados.js"></script>
-    <script src="js/functions-aula.js"></script>
-    <script src="js/functions-materia.js"></script>
-    <script src="js/functions-periodos.js"></script>
-    <script src="js/functions-actividades.js"></script>
+
+    <script src="js/funtions-nota.js"></script>
     <script src="../js/login.js"></script>
   </body>
 </html>

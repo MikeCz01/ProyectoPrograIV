@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var data = JSON.parse(request.responseText);
         swal(
           {
-            title: "Crear/Actualizar Contenido",
+            title: data.msg,
             type: "success",
             confirmButtonText: "Aceptar",
             closeOnConfirm: true,

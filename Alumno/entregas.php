@@ -1,5 +1,5 @@
 <?php 
-if(!empty($_GET('curso')) || !empty($_GET('contenido'))){
+if(!empty($_GET['curso']) || !empty($_GET['contenido']) || !empty($_GET['eva']) ){
     $curso = $_GET['curso'];
     $contenido = $_GET['contenido'];
     $evaluacion = $_GET['eva'];
@@ -20,11 +20,15 @@ $rowa = $querya->rowCount();
 date_default_timezone_set("America/Tegucigalpa");
 $fecha = date('Y-m-d');
 
-$sqlf = "SELECT * FROM evaluaciones WHERE contenido_id = $contenido AND evaluacion_id = $evaluacion";
+$sqlf = "SELECT * FROM evaluaciones WHERE contenido_id  = ? AND evaluacion_id  = ?";
 $queryf = $pdo->prepare($sqlf);
-$queryf->execute();
+$queryf->execute(array($contenido,$evaluacion));
 $result = $queryf->fetch();
-$fechaLimite  = $result['fecha'];
+$rowt = $queryf->rowCount();
+if($rowt>0){
+
+    $fechaLimite = $result['fecha'];
+}
 ?>
 <main class="app-content">
     <div class="app-title">
@@ -42,12 +46,11 @@ $fechaLimite  = $result['fecha'];
             while($data = $querya->fetch()){
                 $valor= '';
                 $calificacion = '';
-                $ev_entregada = $data['ev_entregada_id']
+                $ev_entregada = $data['ev_entregadas_id'];
 
-                $sqln = "SELECT * FROM notas as n  INNER JOIN ev_entregadas as ev ON n.ev_entregada_id = ev.ev_entregada_id INNER JOIN alumnos as a ON ev.alumno_id = a.alumno_id
-                WHERE n.ev_entregada_id = $ev_entregada AND a.alumno_id = $idalumno";
+                $sqln = "SELECT * FROM notas as n  INNER JOIN ev_entregadas as ev ON n.ev_entregadas_id = ev.ev_entregadas_id INNER JOIN alumnos as a ON ev.alumno_id = a.alumno_id WHERE n.ev_entregadas_id = ? AND a.alumno_id = ?";
                 $queryn = $pdo->prepare($sqln);
-                $queryn->execute();
+                $queryn->execute(array($ev_entregada,$idalumno));
                 $datan = $queryn->rowCount();
                 $nota = $queryn->fetch();
                 if($datan > 0){
@@ -93,17 +96,20 @@ $fechaLimite  = $result['fecha'];
     </div>
 
     <?php } } else{?>
-    <?php if($fecha < $fechaLimite){ ?>
+    <?php if($fecha <= $fechaLimite){ ?>
     <div class="row">
         <div class="col-md-12">
             <div class="tile">
                 <h3 class="tile-title">Realizar Entrega</h3>
                 <div class="tile-body">
                     <form class="form-horizontal" id="formEntrega" enctype="multipart/form-data">
+                        <input type="hidden" name="idevaluacion" id="idevaluacion" value='<?= $evaluacion;?>'>
+                        <input type="hidden" name="idalumno" id="idalumno" value='<?= $idalumno;?>'>
                         <div class="form-group row">
                             <label class="control-label col-md-3">Descripcion de la Actividad</label>
                             <div class="col-md-8">
-                                <textarea class="form-control" name="observacion" id="observacion" rows="4" placeholder="Descripcion de la actividad"></textarea>
+                                <textarea class="form-control" name="observacion" id="observacion" rows="4"
+                                    placeholder="Descripcion de la actividad"></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -127,15 +133,15 @@ $fechaLimite  = $result['fecha'];
         </div>
     </div>
     <?php } else{?>
-        <div class="row bg-danger p-3 text-white">
-            <h5>
-                Ya no se pueden hacer entregas (fecha Limite <?= $fechaLimite; ?>)
-            </h5>
-        </div>
+    <div class="row bg-danger p-3 text-white">
+        <h5>
+            Ya no se pueden hacer entregas (fecha Limite <?= $fechaLimite; ?>)
+        </h5>
+    </div>
     <?php }?>
     <?php }?>
     <div class="row">
-        <a href="contenido.php?curso= <?= $curso ?>&contenido=<?= $contenido ?>" class="btn btn-info">
+        <a href="evaluacion.php?curso= <?= $curso ?>&contenido=<?= $contenido ?>" class="btn btn-info">
             << Volver Atras</a>
     </div>
 </main>

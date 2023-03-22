@@ -1,9 +1,9 @@
 <?php
-if(!empty($_get['curso']))
+if(!empty($_GET['curso']))
 {
     $curso= $_GET['curso'];
 } else {
-    header("location: profesor/");
+    header("location: Profesor/");
 }
 require_once 'includes/header.php';
 require_once '../includes/conexion.php';
@@ -11,7 +11,7 @@ require_once '../includes/conexion.php';
 
  $idProfesor = $_SESSION['profesor_id'];
 
-$sqlc = "SELECT * FROM alumno_profesor as ap inner join profesor_materia as pm on ap.pm_id = pm.pm_id INNER JOIN alumnnos as al on ap.alumno_id = al.alumno_id";
+$sqlc = "SELECT * from alumno_profesor as ap inner join profesor_materia as pm on ap.pm_id = pm.pm_id inner join alumnos as a on ap.alumno_id  = a.alumno_id where pm.pm_id = $curso";
 $queryc = $pdo->prepare($sqlc);
 $queryc->execute();
 $rowc = $queryc->rowCount();
@@ -44,12 +44,12 @@ $rowc = $queryc->rowCount();
                                 </thead>
                                 <tbody>
                                     <?php if($rowc> 0){
-                                        while($data->$queryc->fetch()){
+                                        while($data =$queryc->fetch()){
                                             ?>
                                     <tr>
                                         <td><?= $data["nombre_alumno"] ?></td>
                                         <td><a class="btn btn-primary btm-sm" title="Ver Notas"
-                                                href="list-notas.php?alumno=<?= $data["alumno_id"] ?>$curso=<?= $data["pm_id"] ?>">
+                                                href="list-notas.php?alumno=<?= $data["alumno_id"] ?>&curso=<?= $curso; ?>">
                                                 <li class="fas fa-list"></li>
                                             </a></td>
                                     </tr>
