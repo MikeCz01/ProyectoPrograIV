@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
   request.send();
   request.onreadystatechange = function () {
     if (request.readyState == 4 && request.status == 200) {
+      debugger;
       var data = JSON.parse(request.responseText);
       if (data.status) {
         data.data.forEach((dataActividades) => {
@@ -64,13 +65,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function getDateInitial(dateInitial) {
   let fechaDate = new Date(dateInitial);
-  
+  fechaDate.setDate(fechaDate.getDate() + 1); 
   fechaDate.setHours(0, 0, 0, 0);
   return fechaDate;
 }
 
 function getDateFinal(dateFinal) {
   let fechaDate = new Date(dateFinal);
+  fechaDate.setDate(fechaDate.getDate() + 1); 
   fechaDate.setHours(0, 0, 0, 0);
 
   return fechaDate;
