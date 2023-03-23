@@ -13,9 +13,10 @@ header('Location: profesor/');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">    
+    <link rel="website icon" href="images/user.jpg">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">    
     <link rel="stylesheet" href="css/index.css">
-    <title>Ingreso al Sistema</title>
+    <title>Royal Legacy Bilingual School & Institute</title>
 </head>
 <body>
 <section>
